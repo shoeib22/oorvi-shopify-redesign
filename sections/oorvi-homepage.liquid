@@ -64,27 +64,35 @@
       </p>
     </div>
 
-    <div class="process">
-      <div class="process__step">
-        <span class="process__num">01</span>
-        <h3>Seed</h3>
-        <p>A1-grade native variety, sourced from trusted farms across India.</p>
+  </section>
+
+  <!-- SEED TO BOTTLE — scroll-scrubbed 3D flythrough -->
+  <section class="flythrough" id="flythrough">
+    <div class="flythrough__sticky">
+      <canvas id="flythroughCanvas"></canvas>
+      <div class="flythrough__labels">
+        <div class="flythrough__label" data-stage="0">
+          <span class="process__num">01</span>
+          <h3>Seed</h3>
+          <p>A1-grade native variety, sourced from trusted farms across India.</p>
+        </div>
+        <div class="flythrough__label" data-stage="1">
+          <span class="process__num">02</span>
+          <h3>Press</h3>
+          <p>A single mechanical pass, kept at low temperature throughout.</p>
+        </div>
+        <div class="flythrough__label" data-stage="2">
+          <span class="process__num">03</span>
+          <h3>Rest</h3>
+          <p>Naturally settled — no chemical filtration, no shortcuts.</p>
+        </div>
+        <div class="flythrough__label" data-stage="3">
+          <span class="process__num">04</span>
+          <h3>Bottle</h3>
+          <p>Sealed close to the press, so nothing is lost in between.</p>
+        </div>
       </div>
-      <div class="process__step">
-        <span class="process__num">02</span>
-        <h3>Press</h3>
-        <p>A single mechanical pass, kept at low temperature throughout.</p>
-      </div>
-      <div class="process__step">
-        <span class="process__num">03</span>
-        <h3>Rest</h3>
-        <p>Naturally settled — no chemical filtration, no shortcuts.</p>
-      </div>
-      <div class="process__step">
-        <span class="process__num">04</span>
-        <h3>Bottle</h3>
-        <p>Sealed close to the press, so nothing is lost in between.</p>
-      </div>
+      <div class="flythrough__progress"><div class="flythrough__progress-bar" id="flythroughProgressBar"></div></div>
     </div>
   </section>
 
@@ -221,7 +229,9 @@
     'white-sesame-cp.png': {{ 'white-sesame-cp.png' | asset_url | json }},
     'black-sesame-cp.png': {{ 'black-sesame-cp.png' | asset_url | json }},
     'coconut-wp.png': {{ 'coconut-wp.png' | asset_url | json }},
-    'groundnut-wp.png': {{ 'groundnut-wp.png' | asset_url | json }}
+    'groundnut-wp.png': {{ 'groundnut-wp.png' | asset_url | json }},
+    'groundnut-cp-trimmed.png': {{ 'groundnut-cp-trimmed.png' | asset_url | json }},
+    'seed-to-bottle.glb': {{ 'seed-to-bottle.glb' | asset_url | json }}
   };
 </script>
 <script type="module" src="{{ 'oorvi-redesign.js' | asset_url }}"></script>
