@@ -1,0 +1,234 @@
+<div id="topline" class="topline">
+  <p>FSSAI Licensed · ISO 9000:2015 &amp; ISO 22000:2018 Certified · Hyderabad, India</p>
+</div>
+
+<header class="nav" id="nav">
+  <a href="#home" class="nav__brand">
+    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi — Premium Natural Products" width="180" height="70">
+  </a>
+  <nav class="nav__links">
+    <a href="#craft">Our Craft</a>
+    <a href="#range">The Range</a>
+    <a href="#sourcing">Sourcing</a>
+    <a href="#quality">Quality</a>
+  </nav>
+  <div class="nav__actions">
+    <a class="nav__cart" href="{{ routes.cart_url }}" aria-label="Cart">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span>{{ cart.item_count }}</span>
+    </a>
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="eyebrow eyebrow--light">A1 Native Seed · Single Pressing · Zero Filtration</p>
+      <h1 class="hero__title">
+        Nothing added.<br>
+        Nothing taken away.
+      </h1>
+      <p class="hero__sub">
+        Every Oorvi oil is pressed once, from the first pressing only, and left to
+        settle rather than refined. Eight oils. One honest process.
+      </p>
+      <div class="hero__actions">
+        <a href="#range" class="btn btn--gold">Explore the range</a>
+        <a href="#craft" class="btn btn--ghost">Our craft</a>
+      </div>
+    </div>
+    <div class="hero__stage" id="heroStage">
+      <canvas id="heroCanvas"></canvas>
+      <p class="hero__stage-caption">Cold-Pressed Groundnut Oil — drag to turn</p>
+    </div>
+    <button class="hero__scroll" id="scrollHint" aria-label="Scroll">
+      <span></span>
+    </button>
+  </section>
+
+  <!-- OUR CRAFT -->
+  <section class="craft" id="craft">
+    <div class="craft__intro">
+      <p class="eyebrow">Our Craft</p>
+      <h2 class="display display--italic">Pressed once,<br>never refined.</h2>
+      <p class="body-lg">
+        Single-pressed cold-pressed oil is extracted through mechanical pressing at
+        low temperature — the first pressing only, the highest quality there is.
+        Nothing is refined out, so the natural flavour, aroma and nutrients of the
+        seed stay exactly as they were.
+      </p>
+    </div>
+
+    <div class="process">
+      <div class="process__step">
+        <span class="process__num">01</span>
+        <h3>Seed</h3>
+        <p>A1-grade native variety, sourced from trusted farms across India.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__num">02</span>
+        <h3>Press</h3>
+        <p>A single mechanical pass, kept at low temperature throughout.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__num">03</span>
+        <h3>Rest</h3>
+        <p>Naturally settled — no chemical filtration, no shortcuts.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__num">04</span>
+        <h3>Bottle</h3>
+        <p>Sealed close to the press, so nothing is lost in between.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE RANGE -->
+  <section class="range" id="range">
+    <div class="range__head">
+      <div>
+        <p class="eyebrow eyebrow--light">The Range</p>
+        <h2 class="display">Eight oils.<br>One honest process.</h2>
+      </div>
+      <p class="body-lg range__sub">
+        Every bottle shows its true colour instead of a studio render — the
+        pressing never changes, only the seed does.
+      </p>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="filter is-active" data-filter="all">All</button>
+      <button class="filter" data-filter="cooking">Cooking</button>
+      <button class="filter" data-filter="hair-skin">Hair &amp; Skin</button>
+      <button class="filter" data-filter="cold">Cold Pressed</button>
+      <button class="filter" data-filter="wood">Wood Pressed</button>
+    </div>
+
+    <div class="shelf" id="shelf"><!-- injected by oorvi-redesign.js --></div>
+  </section>
+
+  <!-- QUALITY / CERTIFICATION -->
+  <section class="quality" id="quality">
+    <div class="quality__text">
+      <p class="eyebrow">Quality</p>
+      <h2 class="display display--italic">A true blend of<br>science and tradition.</h2>
+      <p class="body-lg">
+        Certification here is a seal of record, not decoration — the same marks
+        that appear on every bottle, brought forward to where the decision to
+        buy actually happens.
+      </p>
+    </div>
+    <div class="seals">
+      <div class="seal">
+        <div class="seal__mark">FSSAI</div>
+        <p class="seal__label">License No.</p>
+        <p class="seal__value">23624028002885</p>
+      </div>
+      <div class="seal">
+        <div class="seal__mark">ISO</div>
+        <p class="seal__label">Quality Management</p>
+        <p class="seal__value">ISO 9000:2015</p>
+      </div>
+      <div class="seal">
+        <div class="seal__mark">ISO</div>
+        <p class="seal__label">Food Safety</p>
+        <p class="seal__value">ISO 22000:2018</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCING / STORY -->
+  <section class="sourcing" id="sourcing">
+    <div class="sourcing__panel">
+      <p class="eyebrow eyebrow--light">Sourcing &amp; Story</p>
+      <h2 class="display display--italic">Oorvi — Sanskrit<br>for Earth.</h2>
+      <p class="body-lg">
+        In a world of processed food, Oorvi is a way back to our roots. We
+        proudly source native-variety, A1-grade seeds from trusted farms and
+        partner with local farmers who follow chemical-free, sustainable
+        practices — so what reaches your bottle is exactly what left the seed.
+      </p>
+      <p class="body-lg">
+        Born in the heart of Hyderabad, Oorvi is more than a brand — it's a
+        movement to bring back the lost connection between people and nature,
+        one honestly pressed drop at a time.
+      </p>
+      <a href="#range" class="btn btn--gold">Shop the range</a>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section class="contact" id="contact">
+    <div class="contact__grid">
+      <div>
+        <p class="eyebrow">Get in Touch</p>
+        <h3 class="display display--sm">We'd love to hear from you.</h3>
+      </div>
+      <div class="contact__item">
+        <span>Phone</span>
+        <a href="tel:+919642114488">+91 96421 14488</a>
+      </div>
+      <div class="contact__item">
+        <span>Email</span>
+        <a href="mailto:care@oorvi.store">care@oorvi.store</a>
+      </div>
+      <div class="contact__item">
+        <span>Visit</span>
+        <p>House No. 7-90/4, Brundavan Colony, Kokapet, Hyderabad, Telangana 500075</p>
+      </div>
+      <div class="contact__item">
+        <span>Hours</span>
+        <p>Mon–Sat, 10 AM–6 PM IST</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi" class="footer__logo" width="160" height="62">
+    <nav class="footer__links">
+      <a href="#craft">Our Craft</a>
+      <a href="#range">The Range</a>
+      <a href="#sourcing">Sourcing</a>
+      <a href="#quality">Quality</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/oorvi.store/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61576821724627" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://youtube.com/@oorvistore" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>© {{ 'now' | date: "%Y" }} Oorvi. FSSAI 23624028002885 · ISO 9000:2015 · ISO 22000:2018</p>
+    <p class="footer__note">Redesign concept — homepage direction.</p>
+  </div>
+</footer>
+
+<script>
+  window.OORVI_ASSETS = {
+    'primary-logo.png': {{ 'primary-logo.png' | asset_url | json }},
+    'groundnut-cp.png': {{ 'groundnut-cp.png' | asset_url | json }},
+    'sunflower-cp.png': {{ 'sunflower-cp.png' | asset_url | json }},
+    'safflower-cp.png': {{ 'safflower-cp.png' | asset_url | json }},
+    'mustard-cp.png': {{ 'mustard-cp.png' | asset_url | json }},
+    'white-sesame-cp.png': {{ 'white-sesame-cp.png' | asset_url | json }},
+    'black-sesame-cp.png': {{ 'black-sesame-cp.png' | asset_url | json }},
+    'coconut-wp.png': {{ 'coconut-wp.png' | asset_url | json }},
+    'groundnut-wp.png': {{ 'groundnut-wp.png' | asset_url | json }}
+  };
+</script>
+<script type="module" src="{{ 'oorvi-redesign.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Oorvi Homepage (Redesign)",
+  "settings": []
+}
+{% endschema %}
