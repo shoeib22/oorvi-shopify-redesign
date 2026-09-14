@@ -1,0 +1,36 @@
+<div id="topline" class="topline">
+  <p>FSSAI Licensed · ISO 9000:2015 &amp; ISO 22000:2018 Certified · Hyderabad, India</p>
+</div>
+
+<header class="nav" id="nav">
+  <a href="{{ routes.root_url }}" class="nav__brand">
+    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi — Premium Natural Products" width="168" height="66">
+  </a>
+  <nav class="nav__links">
+    <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}"{% if template.name == 'collection' or template.name == 'product' %} class="is-current"{% endif %}>Shop</a>
+    <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}"{% if page and page.handle == 'our-story' %} class="is-current"{% endif %}>Our Story</a>
+    <a href="{{ pages['contact'].url | default: '/pages/contact' }}"{% if page and page.handle == 'contact' %} class="is-current"{% endif %}>Contact</a>
+  </nav>
+  <div class="nav__actions">
+    <a class="nav__cart" href="{{ routes.cart_url }}" aria-label="Cart">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span>{{ cart.item_count }}</span>
+    </a>
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__top">
+    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi" width="140" height="54">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">&times;</button>
+  </div>
+  <nav>
+    <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}">Shop</a>
+    <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}">Our Story</a>
+    <a href="{{ pages['contact'].url | default: '/pages/contact' }}">Contact</a>
+    <a href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+  </nav>
+</div>

@@ -1,0 +1,56 @@
+<section class="page-hero">
+  <p class="eyebrow eyebrow--light">Shop</p>
+  <h1 class="display">{{ collection.title | default: "The Range" }}</h1>
+  {% if collection.description != blank %}
+    <div class="page-hero__sub">{{ collection.description }}</div>
+  {% else %}
+    <p class="page-hero__sub">Eight oils, one honest process. Every bottle shows its true colour instead of a studio render.</p>
+  {% endif %}
+</section>
+
+<div class="shop-page">
+  {% if collection.products.size > 0 %}
+    <div class="shelf">
+      {% for product in collection.products %}
+        <a href="{{ product.url }}" class="oil-card is-visible">
+          <div class="oil-card__glow" aria-hidden="true"></div>
+          {% if product.tags.size > 0 %}
+            <div class="oil-card__badges">
+              {% for tag in product.tags limit: 2 %}
+                <span>{{ tag }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <div class="oil-card__figure">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.featured_image.alt | default: product.title }}" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="oil-card__meta">
+            <div>
+              <p class="oil-card__name">{{ product.title }}</p>
+              {% if product.type != blank %}<p class="oil-card__specs">{{ product.type }}</p>{% endif %}
+            </div>
+            <p class="oil-card__price">{{ product.price | money }}</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="shop-empty reveal">
+      <p class="display display--sm">Products coming soon.</p>
+      <p class="body-lg" style="margin: 14px auto 0;">
+        We're setting up the catalogue here. In the meantime, browse the full
+        range on the homepage.
+      </p>
+      <a href="{{ routes.root_url }}#range" class="btn btn--gold" style="margin-top: 26px;">View the range</a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Shop (Collection)",
+  "settings": []
+}
+{% endschema %}

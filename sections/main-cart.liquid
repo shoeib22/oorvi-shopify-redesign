@@ -1,0 +1,55 @@
+<section class="page-hero">
+  <p class="eyebrow eyebrow--light">Your Cart</p>
+  <h1 class="display">{% if cart.item_count > 0 %}{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %}{% else %}Your cart is empty{% endif %}</h1>
+</section>
+
+<div class="cart-page">
+  {% if cart.item_count > 0 %}
+    {% form 'cart' %}
+      <div class="cart-table">
+        {% for item in cart.items %}
+          <div class="cart-line">
+            <div class="cart-line__figure">
+              {% if item.image %}
+                <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}" loading="lazy">
+              {% endif %}
+            </div>
+            <div class="cart-line__info">
+              <p class="cart-line__title">{{ item.product.title }}</p>
+              {% unless item.variant.title == "Default Title" %}
+                <p class="cart-line__variant">{{ item.variant.title }}</p>
+              {% endunless %}
+              <p class="cart-line__price">{{ item.final_price | money }}</p>
+            </div>
+            <div class="product__qty">
+              <button type="button" aria-label="Decrease quantity" onclick="this.nextElementSibling.stepDown();this.nextElementSibling.form.requestSubmit()">&minus;</button>
+              <input type="number" name="updates[{{ forloop.index0 }}]" value="{{ item.quantity }}" min="0" aria-label="Quantity">
+              <button type="button" aria-label="Increase quantity" onclick="this.previousElementSibling.stepUp();this.previousElementSibling.form.requestSubmit()">&plus;</button>
+            </div>
+            <p class="cart-line__total">{{ item.final_line_price | money }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="cart-summary">
+        <p class="cart-summary__total">Subtotal <span>{{ cart.total_price | money }}</span></p>
+        <p class="cart-summary__note">Shipping and taxes calculated at checkout.</p>
+        <button type="submit" name="checkout" class="btn btn--gold product__submit">Checkout</button>
+        <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="btn btn--ghost product__submit">Continue shopping</a>
+      </div>
+    {% endform %}
+  {% else %}
+    <div class="shop-empty reveal">
+      <p class="display display--sm">Nothing here yet.</p>
+      <p class="body-lg" style="margin: 14px auto 0;">Browse the range and find your first pressing.</p>
+      <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="btn btn--gold" style="margin-top: 26px;">Shop the range</a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

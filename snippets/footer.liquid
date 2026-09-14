@@ -1,0 +1,43 @@
+<div class="newsletter">
+  <div class="newsletter__inner">
+    <div>
+      <p class="eyebrow eyebrow--light">Join the List</p>
+      <h3 class="display display--sm">First pressing news, before anyone else.</h3>
+    </div>
+    {% form 'customer' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {% if form.posted_successfully? %}
+        <p class="newsletter__success">You're on the list — welcome to Oorvi.</p>
+      {% else %}
+        <div class="newsletter__field">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletter-email" name="contact[email]" placeholder="Your email address" required>
+          <button type="submit" class="btn btn--gold">Subscribe</button>
+        </div>
+        {% if form.errors %}
+          <p class="newsletter__error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+        {% endif %}
+      {% endif %}
+    {% endform %}
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__top">
+    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi" class="footer__logo" width="150" height="58">
+    <nav class="footer__links">
+      <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}">Shop</a>
+      <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}">Our Story</a>
+      <a href="{{ pages['contact'].url | default: '/pages/contact' }}">Contact</a>
+    </nav>
+    <div class="footer__social">
+      <a href="https://www.instagram.com/oorvi.store/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61576821724627" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://youtube.com/@oorvistore" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>© {{ 'now' | date: "%Y" }} Oorvi. FSSAI 23624028002885 · ISO 9000:2015 · ISO 22000:2018</p>
+    <p class="footer__note">Redesign concept — multipage direction.</p>
+  </div>
+</footer>

@@ -1,390 +1,299 @@
-<div id="topline" class="topline">
-  <p>FSSAI Licensed · ISO 9000:2015 &amp; ISO 22000:2018 Certified · Hyderabad, India</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__content">
+    <p class="eyebrow">A1 Native Seed · Single Pressing · Zero Filtration</p>
+    <h1 class="hero__title">Nothing added.<br>Nothing <em>taken away</em>.</h1>
+    <p class="hero__sub">
+      Every Oorvi oil is pressed once, from the first pressing only, and left to
+      settle rather than refined. Eight oils. One honest process.
+    </p>
+    <div class="hero__actions">
+      <a href="#range" class="btn btn--gold">Explore the range</a>
+      <a href="#craft" class="btn btn--ghost">Our craft</a>
+    </div>
+    <div class="hero__trust">
+      <span>FSSAI Licensed</span>
+      <span>ISO 9000:2015</span>
+      <span>ISO 22000:2018</span>
+    </div>
+  </div>
+  <div class="hero__stage">
+    <div class="hero__stage-glow" aria-hidden="true"></div>
+    <img src="{{ 'groundnut-cp-trimmed.png' | asset_url }}" alt="Oorvi Cold-Pressed Groundnut Oil" width="420" height="640" loading="eager">
+    <p class="hero__stage-caption">Cold-Pressed Groundnut Oil, 1&nbsp;L</p>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__set">
+      <span class="marquee__item">A1 Native Seed<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">Single Pressed<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">Zero Filtration<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">FSSAI Licensed<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">Pressed in Hyderabad<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">ISO 9000 &amp; 22000 Certified<span class="marquee__dot">&middot;</span></span>
+    </div>
+    <div class="marquee__set">
+      <span class="marquee__item">A1 Native Seed<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">Single Pressed<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">Zero Filtration<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">FSSAI Licensed<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">Pressed in Hyderabad<span class="marquee__dot">&middot;</span></span>
+      <span class="marquee__item">ISO 9000 &amp; 22000 Certified<span class="marquee__dot">&middot;</span></span>
+    </div>
+  </div>
 </div>
 
-<header class="nav" id="nav">
-  <a href="#home" class="nav__brand">
-    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi — Premium Natural Products" width="168" height="66">
-  </a>
-  <nav class="nav__links">
-    <a href="#craft">Our Craft</a>
-    <a href="#range">The Range</a>
-    <a href="#sourcing">Sourcing</a>
-    <a href="#quality">Quality</a>
-  </nav>
-  <div class="nav__actions">
-    <a class="nav__cart" href="{{ routes.cart_url }}" aria-label="Cart">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-      <span>{{ cart.item_count }}</span>
-    </a>
-    <button class="nav__menu-btn" id="menuBtn" aria-label="Menu">
-      <span></span><span></span>
-    </button>
+<!-- OUR CRAFT -->
+<section class="craft" id="craft">
+  <div class="craft__intro reveal">
+    <p class="eyebrow">Our Craft</p>
+    <h2 class="display display--italic">Pressed once,<br>never refined.</h2>
+    <p class="body-lg">
+      Single-pressed cold-pressed oil is extracted through mechanical pressing at
+      low temperature — the first pressing only, the highest quality there is.
+      Nothing is refined out, so the natural flavour, aroma and nutrients of the
+      seed stay exactly as they were.
+    </p>
+    <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}" class="btn btn--ghost">Read the full story</a>
   </div>
-</header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu__top">
-    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi" width="140" height="54">
-    <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">&times;</button>
+  <div class="process reveal">
+    <div class="process__step">
+      <span class="process__num">01</span>
+      <h3>Seed</h3>
+      <p>A1-grade native variety, sourced from trusted farms across India.</p>
+    </div>
+    <div class="process__step">
+      <span class="process__num">02</span>
+      <h3>Press</h3>
+      <p>A single mechanical pass, kept at low temperature throughout.</p>
+    </div>
+    <div class="process__step">
+      <span class="process__num">03</span>
+      <h3>Rest</h3>
+      <p>Naturally settled — no chemical filtration, no shortcuts.</p>
+    </div>
+    <div class="process__step">
+      <span class="process__num">04</span>
+      <h3>Bottle</h3>
+      <p>Sealed close to the press, so nothing is lost in between.</p>
+    </div>
   </div>
-  <nav>
-    <a href="#craft">Our Craft</a>
-    <a href="#range">The Range</a>
-    <a href="#sourcing">Sourcing</a>
-    <a href="#quality">Quality</a>
-    <a href="#contact">Contact</a>
-  </nav>
+</section>
+
+<!-- SPOTLIGHT -->
+<section class="spotlight">
+  <div class="spotlight__text reveal">
+    <p class="eyebrow eyebrow--light">Wood Pressed</p>
+    <h2 class="display display--italic">Slower by design,<br>richer for it.</h2>
+    <p class="body-lg">
+      Our wood-pressed line runs through a traditional stone-and-wood ghani,
+      turning slowly to keep temperatures low and nutrients intact — a
+      centuries-old method we haven't tried to speed up.
+    </p>
+    <a href="#range" class="btn btn--gold">Shop wood pressed</a>
+  </div>
+  <div class="spotlight__figure reveal">
+    <div class="spotlight__figure-glow" aria-hidden="true"></div>
+    <img src="{{ 'groundnut-wp.png' | asset_url }}" alt="Oorvi Wood-Pressed Groundnut Oil" width="360" height="560" loading="lazy">
+  </div>
+</section>
+
+<!-- THE RANGE -->
+<section class="range" id="range">
+  <div class="range__head reveal">
+    <div>
+      <p class="eyebrow">The Range</p>
+      <h2 class="display">Eight oils.<br>One honest process.</h2>
+    </div>
+    <p class="body-lg range__sub">
+      Every bottle shows its true colour instead of a studio render — the
+      pressing never changes, only the seed does.
+    </p>
+  </div>
+
+  <div class="filters reveal" id="filters">
+    <button class="filter is-active" data-filter="all">All</button>
+    <button class="filter" data-filter="cooking">Cooking</button>
+    <button class="filter" data-filter="hair-skin">Hair &amp; Skin</button>
+    <button class="filter" data-filter="cold">Cold Pressed</button>
+    <button class="filter" data-filter="wood">Wood Pressed</button>
+  </div>
+
+  <div class="shelf reveal" id="shelf">
+    <div class="oil-card oil-card--flagship" data-categories="cooking,cold" style="--tone:#c89a3e">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Single Pressed</span><span>A1 Native Seed</span></div>
+      <div class="oil-card__figure"><img src="{{ 'groundnut-cp.png' | asset_url }}" alt="Groundnut Oil, Cold Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">Groundnut Oil</p>
+          <p class="oil-card__specs">Cold Pressed · 1 L</p>
+        </div>
+        <p class="oil-card__price">&#8377;490</p>
+      </div>
+    </div>
+
+    <div class="oil-card" data-categories="cooking,cold" style="--tone:#e0b93e">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Zero Filtration</span></div>
+      <div class="oil-card__figure"><img src="{{ 'sunflower-cp.png' | asset_url }}" alt="Sunflower Oil, Cold Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">Sunflower Oil</p>
+          <p class="oil-card__specs">Cold Pressed · 1 L</p>
+        </div>
+        <p class="oil-card__price">&#8377;520</p>
+      </div>
+    </div>
+
+    <div class="oil-card" data-categories="cooking,cold" style="--tone:#d99a3d">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Light &amp; Neutral</span></div>
+      <div class="oil-card__figure"><img src="{{ 'safflower-cp.png' | asset_url }}" alt="Safflower Oil, Cold Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">Safflower Oil</p>
+          <p class="oil-card__specs">Cold Pressed · 1 L</p>
+        </div>
+        <p class="oil-card__price">&#8377;595</p>
+      </div>
+    </div>
+
+    <div class="oil-card" data-categories="cooking,cold" style="--tone:#8b4a1e">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Pungent &amp; Pure</span></div>
+      <div class="oil-card__figure"><img src="{{ 'mustard-cp.png' | asset_url }}" alt="Mustard Oil, Cold Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">Mustard Oil</p>
+          <p class="oil-card__specs">Cold Pressed · 1 L</p>
+        </div>
+        <p class="oil-card__price">&#8377;460</p>
+      </div>
+    </div>
+
+    <div class="oil-card" data-categories="cooking,hair-skin,cold" style="--tone:#d4b565">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Single Pressed</span></div>
+      <div class="oil-card__figure"><img src="{{ 'white-sesame-cp.png' | asset_url }}" alt="White Sesame Oil, Cold Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">White Sesame Oil</p>
+          <p class="oil-card__specs">Cold Pressed · 500 mL</p>
+        </div>
+        <p class="oil-card__price">&#8377;269</p>
+      </div>
+    </div>
+
+    <div class="oil-card" data-categories="cooking,hair-skin,cold" style="--tone:#4a2e1e">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Deep &amp; Rich</span></div>
+      <div class="oil-card__figure"><img src="{{ 'black-sesame-cp.png' | asset_url }}" alt="Black Sesame Oil, Cold Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">Black Sesame Oil</p>
+          <p class="oil-card__specs">Cold Pressed · 500 mL</p>
+        </div>
+        <p class="oil-card__price">&#8377;289</p>
+      </div>
+    </div>
+
+    <div class="oil-card" data-categories="cooking,hair-skin,wood" style="--tone:#ede1be">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Wood Pressed</span></div>
+      <div class="oil-card__figure"><img src="{{ 'coconut-wp.png' | asset_url }}" alt="Coconut Oil, Wood Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">Coconut Oil</p>
+          <p class="oil-card__specs">Wood Pressed · 1 L</p>
+        </div>
+        <p class="oil-card__price">&#8377;759</p>
+      </div>
+    </div>
+
+    <div class="oil-card" data-categories="cooking,wood" style="--tone:#a97830">
+      <div class="oil-card__glow" aria-hidden="true"></div>
+      <div class="oil-card__badges"><span>Wood Pressed</span><span>A1 Native Seed</span></div>
+      <div class="oil-card__figure"><img src="{{ 'groundnut-wp.png' | asset_url }}" alt="Groundnut Oil, Wood Pressed" loading="lazy"></div>
+      <div class="oil-card__meta">
+        <div>
+          <p class="oil-card__name">Groundnut Oil</p>
+          <p class="oil-card__specs">Wood Pressed · 1 L</p>
+        </div>
+        <p class="oil-card__price">&#8377;460</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="range__footer reveal">
+    <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="btn btn--ghost">View full shop &rarr;</a>
+  </div>
+</section>
+
+<!-- QUALITY / CERTIFICATION -->
+<section class="quality" id="quality">
+  <div class="quality__text reveal">
+    <p class="eyebrow">Quality</p>
+    <h2 class="display display--italic">A true blend of<br>science and tradition.</h2>
+    <p class="body-lg">
+      Certification here is a seal of record, not decoration — the same marks
+      that appear on every bottle, brought forward to where the decision to
+      buy actually happens.
+    </p>
+  </div>
+  <div class="seals reveal">
+    <div class="seal">
+      <div class="seal__mark">FSSAI</div>
+      <div>
+        <p class="seal__label">License No.</p>
+        <p class="seal__value">23624028002885</p>
+      </div>
+    </div>
+    <div class="seal">
+      <div class="seal__mark">ISO</div>
+      <div>
+        <p class="seal__label">Quality Management</p>
+        <p class="seal__value">ISO 9000:2015</p>
+      </div>
+    </div>
+    <div class="seal">
+      <div class="seal__mark">ISO</div>
+      <div>
+        <p class="seal__label">Food Safety</p>
+        <p class="seal__value">ISO 22000:2018</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCING / STORY -->
+<section class="sourcing" id="sourcing">
+  <div class="sourcing__panel reveal">
+    <p class="eyebrow eyebrow--light">Sourcing &amp; Story</p>
+    <h2 class="display display--italic">Oorvi — Sanskrit<br>for Earth.</h2>
+    <p class="body-lg">
+      In a world of processed food, Oorvi is a way back to our roots. We
+      proudly source native-variety, A1-grade seeds from trusted farms and
+      partner with local farmers who follow chemical-free, sustainable
+      practices — so what reaches your bottle is exactly what left the seed.
+    </p>
+    <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}" class="btn btn--gold">Read our full story</a>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<div class="connect reveal">
+  <p class="connect__label">Follow along</p>
+  <div class="connect__links">
+    <a href="https://www.instagram.com/oorvi.store/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61576821724627" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://youtube.com/@oorvistore" target="_blank" rel="noopener">YouTube</a>
+  </div>
 </div>
-
-<main id="home">
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__content">
-      <p class="eyebrow">A1 Native Seed · Single Pressing · Zero Filtration</p>
-      <h1 class="hero__title">Nothing added.<br>Nothing <em>taken away</em>.</h1>
-      <p class="hero__sub">
-        Every Oorvi oil is pressed once, from the first pressing only, and left to
-        settle rather than refined. Eight oils. One honest process.
-      </p>
-      <div class="hero__actions">
-        <a href="#range" class="btn btn--gold">Explore the range</a>
-        <a href="#craft" class="btn btn--ghost">Our craft</a>
-      </div>
-      <div class="hero__trust">
-        <span>FSSAI Licensed</span>
-        <span>ISO 9000:2015</span>
-        <span>ISO 22000:2018</span>
-      </div>
-    </div>
-    <div class="hero__stage">
-      <div class="hero__stage-glow" aria-hidden="true"></div>
-      <img src="{{ 'groundnut-cp-trimmed.png' | asset_url }}" alt="Oorvi Cold-Pressed Groundnut Oil" width="420" height="640" loading="eager">
-      <p class="hero__stage-caption">Cold-Pressed Groundnut Oil, 1&nbsp;L</p>
-    </div>
-  </section>
-
-  <!-- TRUST MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <div class="marquee__set">
-        <span class="marquee__item">A1 Native Seed<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">Single Pressed<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">Zero Filtration<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">FSSAI Licensed<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">Pressed in Hyderabad<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">ISO 9000 &amp; 22000 Certified<span class="marquee__dot">&middot;</span></span>
-      </div>
-      <div class="marquee__set">
-        <span class="marquee__item">A1 Native Seed<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">Single Pressed<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">Zero Filtration<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">FSSAI Licensed<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">Pressed in Hyderabad<span class="marquee__dot">&middot;</span></span>
-        <span class="marquee__item">ISO 9000 &amp; 22000 Certified<span class="marquee__dot">&middot;</span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- OUR CRAFT -->
-  <section class="craft" id="craft">
-    <div class="craft__intro reveal">
-      <p class="eyebrow">Our Craft</p>
-      <h2 class="display display--italic">Pressed once,<br>never refined.</h2>
-      <p class="body-lg">
-        Single-pressed cold-pressed oil is extracted through mechanical pressing at
-        low temperature — the first pressing only, the highest quality there is.
-        Nothing is refined out, so the natural flavour, aroma and nutrients of the
-        seed stay exactly as they were.
-      </p>
-    </div>
-
-    <div class="process reveal">
-      <div class="process__step">
-        <span class="process__num">01</span>
-        <h3>Seed</h3>
-        <p>A1-grade native variety, sourced from trusted farms across India.</p>
-      </div>
-      <div class="process__step">
-        <span class="process__num">02</span>
-        <h3>Press</h3>
-        <p>A single mechanical pass, kept at low temperature throughout.</p>
-      </div>
-      <div class="process__step">
-        <span class="process__num">03</span>
-        <h3>Rest</h3>
-        <p>Naturally settled — no chemical filtration, no shortcuts.</p>
-      </div>
-      <div class="process__step">
-        <span class="process__num">04</span>
-        <h3>Bottle</h3>
-        <p>Sealed close to the press, so nothing is lost in between.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPOTLIGHT -->
-  <section class="spotlight">
-    <div class="spotlight__text reveal">
-      <p class="eyebrow eyebrow--light">Wood Pressed</p>
-      <h2 class="display display--italic">Slower by design,<br>richer for it.</h2>
-      <p class="body-lg">
-        Our wood-pressed line runs through a traditional stone-and-wood ghani,
-        turning slowly to keep temperatures low and nutrients intact — a
-        centuries-old method we haven't tried to speed up.
-      </p>
-      <a href="#range" class="btn btn--gold">Shop wood pressed</a>
-    </div>
-    <div class="spotlight__figure reveal">
-      <div class="spotlight__figure-glow" aria-hidden="true"></div>
-      <img src="{{ 'groundnut-wp.png' | asset_url }}" alt="Oorvi Wood-Pressed Groundnut Oil" width="360" height="560" loading="lazy">
-    </div>
-  </section>
-
-  <!-- THE RANGE -->
-  <section class="range" id="range">
-    <div class="range__head reveal">
-      <div>
-        <p class="eyebrow">The Range</p>
-        <h2 class="display">Eight oils.<br>One honest process.</h2>
-      </div>
-      <p class="body-lg range__sub">
-        Every bottle shows its true colour instead of a studio render — the
-        pressing never changes, only the seed does.
-      </p>
-    </div>
-
-    <div class="filters reveal" id="filters">
-      <button class="filter is-active" data-filter="all">All</button>
-      <button class="filter" data-filter="cooking">Cooking</button>
-      <button class="filter" data-filter="hair-skin">Hair &amp; Skin</button>
-      <button class="filter" data-filter="cold">Cold Pressed</button>
-      <button class="filter" data-filter="wood">Wood Pressed</button>
-    </div>
-
-    <div class="shelf reveal" id="shelf">
-      <div class="oil-card oil-card--flagship" data-categories="cooking,cold" style="--tone:#c89a3e">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Single Pressed</span><span>A1 Native Seed</span></div>
-        <div class="oil-card__figure"><img src="{{ 'groundnut-cp.png' | asset_url }}" alt="Groundnut Oil, Cold Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">Groundnut Oil</p>
-            <p class="oil-card__specs">Cold Pressed · 1 L</p>
-          </div>
-          <p class="oil-card__price">&#8377;490</p>
-        </div>
-      </div>
-
-      <div class="oil-card" data-categories="cooking,cold" style="--tone:#e0b93e">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Zero Filtration</span></div>
-        <div class="oil-card__figure"><img src="{{ 'sunflower-cp.png' | asset_url }}" alt="Sunflower Oil, Cold Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">Sunflower Oil</p>
-            <p class="oil-card__specs">Cold Pressed · 1 L</p>
-          </div>
-          <p class="oil-card__price">&#8377;520</p>
-        </div>
-      </div>
-
-      <div class="oil-card" data-categories="cooking,cold" style="--tone:#d99a3d">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Light &amp; Neutral</span></div>
-        <div class="oil-card__figure"><img src="{{ 'safflower-cp.png' | asset_url }}" alt="Safflower Oil, Cold Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">Safflower Oil</p>
-            <p class="oil-card__specs">Cold Pressed · 1 L</p>
-          </div>
-          <p class="oil-card__price">&#8377;595</p>
-        </div>
-      </div>
-
-      <div class="oil-card" data-categories="cooking,cold" style="--tone:#8b4a1e">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Pungent &amp; Pure</span></div>
-        <div class="oil-card__figure"><img src="{{ 'mustard-cp.png' | asset_url }}" alt="Mustard Oil, Cold Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">Mustard Oil</p>
-            <p class="oil-card__specs">Cold Pressed · 1 L</p>
-          </div>
-          <p class="oil-card__price">&#8377;460</p>
-        </div>
-      </div>
-
-      <div class="oil-card" data-categories="cooking,hair-skin,cold" style="--tone:#d4b565">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Single Pressed</span></div>
-        <div class="oil-card__figure"><img src="{{ 'white-sesame-cp.png' | asset_url }}" alt="White Sesame Oil, Cold Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">White Sesame Oil</p>
-            <p class="oil-card__specs">Cold Pressed · 500 mL</p>
-          </div>
-          <p class="oil-card__price">&#8377;269</p>
-        </div>
-      </div>
-
-      <div class="oil-card" data-categories="cooking,hair-skin,cold" style="--tone:#4a2e1e">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Deep &amp; Rich</span></div>
-        <div class="oil-card__figure"><img src="{{ 'black-sesame-cp.png' | asset_url }}" alt="Black Sesame Oil, Cold Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">Black Sesame Oil</p>
-            <p class="oil-card__specs">Cold Pressed · 500 mL</p>
-          </div>
-          <p class="oil-card__price">&#8377;289</p>
-        </div>
-      </div>
-
-      <div class="oil-card" data-categories="cooking,hair-skin,wood" style="--tone:#ede1be">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Wood Pressed</span></div>
-        <div class="oil-card__figure"><img src="{{ 'coconut-wp.png' | asset_url }}" alt="Coconut Oil, Wood Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">Coconut Oil</p>
-            <p class="oil-card__specs">Wood Pressed · 1 L</p>
-          </div>
-          <p class="oil-card__price">&#8377;759</p>
-        </div>
-      </div>
-
-      <div class="oil-card" data-categories="cooking,wood" style="--tone:#a97830">
-        <div class="oil-card__glow" aria-hidden="true"></div>
-        <div class="oil-card__badges"><span>Wood Pressed</span><span>A1 Native Seed</span></div>
-        <div class="oil-card__figure"><img src="{{ 'groundnut-wp.png' | asset_url }}" alt="Groundnut Oil, Wood Pressed" loading="lazy"></div>
-        <div class="oil-card__meta">
-          <div>
-            <p class="oil-card__name">Groundnut Oil</p>
-            <p class="oil-card__specs">Wood Pressed · 1 L</p>
-          </div>
-          <p class="oil-card__price">&#8377;460</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUALITY / CERTIFICATION -->
-  <section class="quality" id="quality">
-    <div class="quality__text reveal">
-      <p class="eyebrow">Quality</p>
-      <h2 class="display display--italic">A true blend of<br>science and tradition.</h2>
-      <p class="body-lg">
-        Certification here is a seal of record, not decoration — the same marks
-        that appear on every bottle, brought forward to where the decision to
-        buy actually happens.
-      </p>
-    </div>
-    <div class="seals reveal">
-      <div class="seal">
-        <div class="seal__mark">FSSAI</div>
-        <div>
-          <p class="seal__label">License No.</p>
-          <p class="seal__value">23624028002885</p>
-        </div>
-      </div>
-      <div class="seal">
-        <div class="seal__mark">ISO</div>
-        <div>
-          <p class="seal__label">Quality Management</p>
-          <p class="seal__value">ISO 9000:2015</p>
-        </div>
-      </div>
-      <div class="seal">
-        <div class="seal__mark">ISO</div>
-        <div>
-          <p class="seal__label">Food Safety</p>
-          <p class="seal__value">ISO 22000:2018</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOURCING / STORY -->
-  <section class="sourcing" id="sourcing">
-    <div class="sourcing__panel reveal">
-      <p class="eyebrow eyebrow--light">Sourcing &amp; Story</p>
-      <h2 class="display display--italic">Oorvi — Sanskrit<br>for Earth.</h2>
-      <p class="body-lg">
-        In a world of processed food, Oorvi is a way back to our roots. We
-        proudly source native-variety, A1-grade seeds from trusted farms and
-        partner with local farmers who follow chemical-free, sustainable
-        practices — so what reaches your bottle is exactly what left the seed.
-      </p>
-      <p class="body-lg">
-        Born in the heart of Hyderabad, Oorvi is more than a brand — it's a
-        movement to bring back the lost connection between people and nature,
-        one honestly pressed drop at a time.
-      </p>
-      <a href="#range" class="btn btn--gold">Shop the range</a>
-    </div>
-  </section>
-
-  <!-- CONNECT -->
-  <div class="connect reveal">
-    <p class="connect__label">Follow along</p>
-    <div class="connect__links">
-      <a href="https://www.instagram.com/oorvi.store/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=61576821724627" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://youtube.com/@oorvistore" target="_blank" rel="noopener">YouTube</a>
-    </div>
-  </div>
-
-  <!-- CONTACT STRIP -->
-  <section class="contact" id="contact">
-    <div class="contact__grid">
-      <div>
-        <p class="eyebrow">Get in Touch</p>
-        <h3 class="display display--sm">We'd love to hear from you.</h3>
-      </div>
-      <div class="contact__item">
-        <span>Phone</span>
-        <a href="tel:+919642114488">+91 96421 14488</a>
-      </div>
-      <div class="contact__item">
-        <span>Email</span>
-        <a href="mailto:care@oorvi.store">care@oorvi.store</a>
-      </div>
-      <div class="contact__item">
-        <span>Visit</span>
-        <p>House No. 7-90/4, Brundavan Colony, Kokapet, Hyderabad, Telangana 500075</p>
-      </div>
-      <div class="contact__item">
-        <span>Hours</span>
-        <p>Mon–Sat, 10 AM–6 PM IST</p>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="footer__top">
-    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi" class="footer__logo" width="150" height="58">
-    <nav class="footer__links">
-      <a href="#craft">Our Craft</a>
-      <a href="#range">The Range</a>
-      <a href="#sourcing">Sourcing</a>
-      <a href="#quality">Quality</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="footer__social">
-      <a href="https://www.instagram.com/oorvi.store/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=61576821724627" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://youtube.com/@oorvistore" target="_blank" rel="noopener">YouTube</a>
-    </div>
-  </div>
-  <div class="footer__bottom">
-    <p>© {{ 'now' | date: "%Y" }} Oorvi. FSSAI 23624028002885 · ISO 9000:2015 · ISO 22000:2018</p>
-    <p class="footer__note">Redesign concept — homepage direction.</p>
-  </div>
-</footer>
-
-<script src="{{ 'oorvi-homepage.js' | asset_url }}" defer></script>
 
 {% schema %}
 {

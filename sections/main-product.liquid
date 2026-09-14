@@ -1,0 +1,67 @@
+<div class="product">
+  <div class="product__gallery">
+    {% if product.featured_image %}
+      <img
+        src="{{ product.featured_image | image_url: width: 800 }}"
+        alt="{{ product.featured_image.alt | default: product.title }}"
+        width="500"
+        height="760"
+      >
+    {% endif %}
+  </div>
+
+  <div class="product__info">
+    <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="product__back">&larr; Back to shop</a>
+    <h1 class="product__title">{{ product.title }}</h1>
+    <p class="product__price">
+      {% if product.compare_at_price > product.price %}
+        <s>{{ product.compare_at_price | money }}</s>
+      {% endif %}
+      {{ product.price | money }}
+    </p>
+
+    {% if product.description != blank %}
+      <div class="product__description">{{ product.description }}</div>
+    {% endif %}
+
+    {% form 'product', product %}
+      {% unless product.has_only_default_variant %}
+        <div class="product__variant">
+          <label for="product-variant" class="visually-hidden">Variant</label>
+          <select id="product-variant" name="id">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                {{ variant.title }} {% unless variant.available %}— Sold out{% endunless %}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% else %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% endunless %}
+
+      <div class="product__qty">
+        <button type="button" aria-label="Decrease quantity" onclick="this.nextElementSibling.stepDown()">&minus;</button>
+        <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
+        <button type="button" aria-label="Increase quantity" onclick="this.previousElementSibling.stepUp()">&plus;</button>
+      </div>
+
+      <button type="submit" class="btn btn--gold product__submit" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}Add to cart{% else %}Sold out{% endif %}
+      </button>
+    {% endform %}
+
+    <div class="product__trust">
+      <span>FSSAI Licensed</span>
+      <span>ISO 9000:2015</span>
+      <span>ISO 22000:2018</span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}
