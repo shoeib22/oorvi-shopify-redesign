@@ -142,6 +142,9 @@ section { position: relative; }
   font-size: 12px;
   font-weight: 700;
 }
+.nav__account { display: flex; align-items: center; gap: 6px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.nav__account-label { display: none; }
+@media (min-width: 700px) { .nav__account-label { display: inline; } }
 .nav__menu-btn { display: none; flex-direction: column; gap: 5px; padding: 6px; }
 .nav__menu-btn span { width: 20px; height: 1.5px; background: var(--ink); }
 
@@ -628,6 +631,38 @@ section { position: relative; }
 .product__trust span { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
 .product__back { display: inline-block; margin-bottom: 30px; font-size: 13px; font-weight: 600; color: var(--gold); }
 
+/* -- Customer auth pages (login / register / reset password) -------------- */
+.auth-page { max-width: 480px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px) 140px; }
+.auth-card { border: 1px solid var(--paper-line); border-radius: var(--radius); padding: 34px; background: var(--paper-white); }
+.auth-card form { display: flex; flex-direction: column; }
+.auth-recover { margin-top: 20px; border-top: 1px solid var(--paper-line); padding-top: 18px; }
+.auth-recover summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--gold); }
+.auth-recover form { margin-top: 16px; }
+.auth-switch { text-align: center; margin-top: 24px; font-size: 14px; }
+.auth-switch a, .auth-links a { color: var(--gold); font-weight: 600; }
+
+/* -- Customer account dashboard -------------------------------------------- */
+.account-page { max-width: var(--container); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px) 140px; display: grid; grid-template-columns: 1fr .5fr; gap: 60px; align-items: start; }
+.account-page__main h2 { margin-bottom: 24px; }
+.account-card { border: 1px solid var(--paper-line); border-radius: var(--radius); padding: 26px; background: var(--paper-white); position: sticky; top: 100px; }
+.order-history { display: flex; flex-direction: column; border-top: 1px solid var(--paper-line); }
+.order-history__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--paper-line);
+  font-size: 14px;
+  transition: opacity .2s var(--ease);
+}
+.order-history__row:hover { opacity: .7; }
+.order-history__name { font-family: var(--font-display); font-weight: 500; }
+.order-history__date, .order-history__status { color: #15110985; }
+.order-history__total { font-weight: 700; color: var(--gold); text-align: right; }
+.address-list { display: grid; gap: 16px; }
+.address-card { border: 1px solid var(--paper-line); border-radius: var(--radius); padding: 20px 22px; background: var(--paper-white); }
+
 /* -- Cart page ---------------------------------------------------------------- */
 .cart-page { max-width: var(--container); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px) 140px; display: grid; grid-template-columns: 1fr .4fr; gap: 60px; align-items: start; }
 .cart-table { display: flex; flex-direction: column; gap: 24px; }
@@ -686,6 +721,9 @@ section { position: relative; }
   .contact-form { grid-template-columns: 1fr; }
   .cart-page { grid-template-columns: 1fr; }
   .cart-summary { position: static; }
+  .account-page { grid-template-columns: 1fr; }
+  .account-card { position: static; }
+  .order-history__row { grid-template-columns: 1fr 1fr; row-gap: 4px; }
 }
 @media (max-width: 560px) {
   .shelf { grid-template-columns: 1fr; }

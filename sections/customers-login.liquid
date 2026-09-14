@@ -1,0 +1,55 @@
+<section class="page-hero">
+  <p class="eyebrow eyebrow--light">Account</p>
+  <h1 class="display">Log in</h1>
+</section>
+
+<div class="auth-page">
+  <div class="auth-card reveal">
+    {% form 'customer_login' %}
+      {% if form.errors %}
+        <p class="newsletter__error" style="color:#b5651d;">{{ form.errors | default_errors }}</p>
+      {% endif %}
+
+      <div class="contact-form__field">
+        <label for="customer-email">Email</label>
+        <input type="email" id="customer-email" name="customer[email]" autocomplete="email" required>
+      </div>
+
+      <div class="contact-form__field">
+        <label for="customer-password">Password</label>
+        <input type="password" id="customer-password" name="customer[password]" autocomplete="current-password" required>
+      </div>
+
+      <button type="submit" class="btn btn--gold product__submit">Log in</button>
+    {% endform %}
+
+    <details class="auth-recover">
+      <summary>Forgot your password?</summary>
+      {% form 'recover_customer_password' %}
+        {% if form.posted_successfully? %}
+          <p class="contact-form__success">If that email has an account, a reset link is on its way.</p>
+        {% else %}
+          {% if form.errors %}
+            <p class="newsletter__error" style="color:#b5651d;">{{ form.errors | default_errors }}</p>
+          {% endif %}
+          <div class="contact-form__field">
+            <label for="recover-email">Email</label>
+            <input type="email" id="recover-email" name="email" autocomplete="email" required>
+          </div>
+          <button type="submit" class="btn btn--ghost product__submit">Send reset link</button>
+        {% endif %}
+      {% endform %}
+    </details>
+  </div>
+
+  <p class="auth-switch reveal">
+    New to Oorvi? <a href="{{ routes.account_register_url }}">Create an account</a>
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Login",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,42 @@
+<section class="page-hero">
+  <p class="eyebrow eyebrow--light">Order {{ order.name }}</p>
+  <h1 class="display">{{ order.created_at | date: "%d %B %Y" }}</h1>
+</section>
+
+<div class="cart-page">
+  <div class="cart-table">
+    {% for line_item in order.line_items %}
+      <div class="cart-line">
+        <div class="cart-line__figure">
+          {% if line_item.image %}
+            <img src="{{ line_item.image | image_url: width: 200 }}" alt="{{ line_item.title }}">
+          {% endif %}
+        </div>
+        <div class="cart-line__info">
+          <p class="cart-line__title">{{ line_item.title }}</p>
+          <p class="cart-line__price">Qty {{ line_item.quantity }}</p>
+        </div>
+        <p class="cart-line__total">{{ line_item.final_line_price | money }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="cart-summary">
+    <p class="cart-summary__total">Total <span>{{ order.total_price | money }}</span></p>
+    <p class="cart-summary__note">{{ order.fulfillment_status_label }} &middot; {{ order.financial_status_label }}</p>
+    {% if order.shipping_address %}
+      <div class="contact__item" style="margin-top: 10px;">
+        <span>Shipping to</span>
+        <p>{{ order.shipping_address.address1 }}, {{ order.shipping_address.city }} {{ order.shipping_address.zip }}</p>
+      </div>
+    {% endif %}
+    <a href="{{ routes.account_url }}" class="btn btn--ghost product__submit">Back to account</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Order",
+  "settings": []
+}
+{% endschema %}

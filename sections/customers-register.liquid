@@ -1,0 +1,47 @@
+<section class="page-hero">
+  <p class="eyebrow eyebrow--light">Account</p>
+  <h1 class="display">Create your account</h1>
+</section>
+
+<div class="auth-page">
+  <div class="auth-card reveal">
+    {% form 'create_customer' %}
+      {% if form.errors %}
+        <p class="newsletter__error" style="color:#b5651d;">{{ form.errors | default_errors }}</p>
+      {% endif %}
+
+      <div class="contact-form__field">
+        <label for="register-first-name">First name</label>
+        <input type="text" id="register-first-name" name="customer[first_name]" autocomplete="given-name">
+      </div>
+
+      <div class="contact-form__field">
+        <label for="register-last-name">Last name</label>
+        <input type="text" id="register-last-name" name="customer[last_name]" autocomplete="family-name">
+      </div>
+
+      <div class="contact-form__field">
+        <label for="register-email">Email</label>
+        <input type="email" id="register-email" name="customer[email]" autocomplete="email" required>
+      </div>
+
+      <div class="contact-form__field">
+        <label for="register-password">Password</label>
+        <input type="password" id="register-password" name="customer[password]" autocomplete="new-password" required>
+      </div>
+
+      <button type="submit" class="btn btn--gold product__submit">Create account</button>
+    {% endform %}
+  </div>
+
+  <p class="auth-switch reveal">
+    Already have an account? <a href="{{ routes.account_login_url }}">Log in</a>
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Register",
+  "settings": []
+}
+{% endschema %}
