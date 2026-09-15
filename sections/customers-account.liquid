@@ -1,0 +1,43 @@
+<section class="page-hero">
+  <p class="eyebrow eyebrow--light">Account</p>
+  <h1 class="display">Welcome back{% if customer.first_name != blank %}, {{ customer.first_name }}{% endif %}.</h1>
+</section>
+
+<div class="account-page">
+  <div class="account-page__main reveal">
+    <h2 class="display display--sm">Order history</h2>
+
+    {% if customer.orders.size > 0 %}
+      <div class="order-history">
+        {% for order in customer.orders %}
+          <a href="{{ order.customer_url }}" class="order-history__row">
+            <span class="order-history__name">{{ order.name }}</span>
+            <span class="order-history__date">{{ order.created_at | date: "%d %b %Y" }}</span>
+            <span class="order-history__status">{{ order.fulfillment_status_label }}</span>
+            <span class="order-history__total">{{ order.total_price | money }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="body-lg">No orders yet.</p>
+      <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="btn btn--gold" style="margin-top: 20px;">Start shopping</a>
+    {% endif %}
+  </div>
+
+  <div class="account-page__side reveal">
+    <div class="account-card">
+      <p class="eyebrow">Account Details</p>
+      <p class="body-lg" style="margin-top: 10px;">{{ customer.first_name }} {{ customer.last_name }}</p>
+      <p class="body-lg" style="margin-top: 4px;">{{ customer.email }}</p>
+      <a href="{{ routes.account_addresses_url }}" class="btn btn--ghost product__submit" style="margin-top: 20px;">Manage addresses</a>
+      <a href="{{ routes.account_logout_url }}" class="btn btn--ghost product__submit" style="margin-top: 10px;">Log out</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Account",
+  "settings": []
+}
+{% endschema %}
