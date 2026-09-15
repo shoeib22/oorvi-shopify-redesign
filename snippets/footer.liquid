@@ -24,7 +24,7 @@
 
 <footer class="footer">
   <div class="footer__top">
-    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi" class="footer__logo" width="150" height="58">
+    <img src="{{ 'primary-logo.png' | asset_url }}" alt="Oorvi" class="footer__logo" width="150" height="58" style="height: auto; max-width: 150px; object-fit: contain;">
     <nav class="footer__links">
       <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}">Shop</a>
       <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}">Our Story</a>
