@@ -126,15 +126,7 @@ section { position: relative; }
 .btn--ghost-dark { border-color: var(--dark-line); color: var(--paper); }
 .btn--ghost-dark:hover { border-color: var(--gold-hover); color: var(--gold-hover); }
 
-/* -- Topline + nav -------------------------------------------------------- */
-.topline {
-  background: var(--ink);
-  color: var(--paper-soft);
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: .04em;
-  padding: 9px 16px;
-}
+/* -- Nav -------------------------------------------------------------------- */
 .nav {
   position: sticky;
   top: 0;
@@ -718,21 +710,33 @@ section { position: relative; }
 
 /* -- Campaign gallery (Our Story) ------------------------------------------ */
 .campaign { background: var(--ink); color: var(--paper); padding: 110px 0; overflow: hidden; }
-.campaign__head { max-width: var(--container); margin: 0 auto 40px; padding: 0 clamp(20px, 4vw, 56px); }
+.campaign__head { max-width: var(--container); margin: 0 auto 40px; padding: 0 clamp(20px, 4vw, 56px); display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .campaign__head .display { color: var(--paper); }
+.campaign__hint { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #f1e6c973; display: flex; align-items: center; gap: 8px; transition: opacity .3s var(--ease); }
+.campaign__hint svg { animation: campaignNudge 1.8s ease-in-out infinite; }
+@keyframes campaignNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
 .campaign__scroll {
   display: flex;
   gap: 18px;
   overflow-x: auto;
-  padding: 0 clamp(20px, 4vw, 56px) 14px;
+  padding: 0 clamp(20px, 4vw, 56px) 4px;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.campaign__scroll::-webkit-scrollbar { display: none; }
 .campaign__scroll img {
   height: 420px;
   width: auto;
   flex-shrink: 0;
   border-radius: var(--radius);
   scroll-snap-align: start;
+}
+.campaign__track { max-width: var(--container); margin: 22px auto 0; padding: 0 clamp(20px, 4vw, 56px); }
+.campaign__track-bar { height: 2px; background: var(--dark-line-soft); border-radius: 999px; overflow: hidden; }
+.campaign__track-fill { height: 100%; width: 25%; background: var(--gold-hover); border-radius: 999px; transition: width .15s linear; }
+@media (prefers-reduced-motion: reduce) {
+  .campaign__hint svg { animation: none; }
 }
 
 /* -- Shop (collection) page ------------------------------------------------- */
