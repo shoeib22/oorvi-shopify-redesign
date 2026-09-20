@@ -302,7 +302,7 @@ section { position: relative; }
 
 /* -- Manifesto (full-bleed poster moment) ------------------------------- */
 .manifesto {
-  background: var(--green);
+  background: var(--green) center / cover no-repeat;
   color: var(--paper);
   padding: clamp(90px, 14vw, 180px) clamp(20px, 4vw, 56px);
   text-align: center;
@@ -328,7 +328,10 @@ section { position: relative; }
 
 /* -- Craft / process ---------------------------------------------------- */
 .craft { padding: 120px clamp(20px, 4vw, 56px) 90px; max-width: var(--container); margin: 0 auto; }
-.craft__intro { max-width: 640px; }
+.craft__top { display: grid; grid-template-columns: 1.05fr .95fr; gap: 60px; align-items: center; }
+.craft__intro { max-width: 560px; }
+.craft__figure { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; }
+.craft__figure img { width: 100%; height: 100%; object-fit: cover; }
 .process {
   margin-top: 76px;
   display: grid;
@@ -394,6 +397,9 @@ section { position: relative; }
   flex-wrap: wrap;
 }
 .range__sub { color: #15110999; margin-top: 6px; align-self: flex-end; }
+
+.range__lineup { max-width: var(--container); margin: 50px auto 0; border-radius: var(--radius); overflow: hidden; }
+.range__lineup img { width: 100%; height: auto; display: block; }
 
 .filters { max-width: var(--container); margin: 46px auto 0; display: flex; gap: 10px; flex-wrap: wrap; }
 .filter {
@@ -707,6 +713,27 @@ section { position: relative; }
 .promise-list { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 18px; }
 .promise-list li { display: flex; gap: 16px; align-items: baseline; font-size: 16px; line-height: 1.5; }
 .promise-list li::before { content: "—"; color: var(--gold); flex-shrink: 0; }
+.story-block__figure { margin-top: 36px; max-width: 480px; border-radius: var(--radius); overflow: hidden; }
+.story-block__figure img { width: 100%; display: block; }
+
+/* -- Campaign gallery (Our Story) ------------------------------------------ */
+.campaign { background: var(--ink); color: var(--paper); padding: 110px 0; overflow: hidden; }
+.campaign__head { max-width: var(--container); margin: 0 auto 40px; padding: 0 clamp(20px, 4vw, 56px); }
+.campaign__head .display { color: var(--paper); }
+.campaign__scroll {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 0 clamp(20px, 4vw, 56px) 14px;
+  scroll-snap-type: x mandatory;
+}
+.campaign__scroll img {
+  height: 420px;
+  width: auto;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  scroll-snap-align: start;
+}
 
 /* -- Shop (collection) page ------------------------------------------------- */
 .shop-page { padding: 100px clamp(20px, 4vw, 56px) 140px; max-width: var(--container); margin: 0 auto; }
@@ -816,6 +843,8 @@ section { position: relative; }
   .nav__links { display: none; }
   .nav__menu-btn { display: flex; }
   .hero { grid-template-columns: 1fr; min-height: auto; gap: 0; padding-right: clamp(20px, 4vw, 56px); }
+  .craft__top { grid-template-columns: 1fr; gap: 34px; }
+  .craft__figure { aspect-ratio: 16 / 10; order: -1; }
   .hero__content { padding: 56px 0 20px; max-width: 100%; margin-right: 0; }
   .hero__title { font-size: clamp(44px, 12vw, 72px); }
   .hero__stage { height: 52vh; }
@@ -850,6 +879,8 @@ section { position: relative; }
   .newsletter__field { width: 100%; }
   .newsletter__field input { flex: 1; min-width: 0; }
   .lookbook__grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .campaign__scroll img { height: 280px; }
+  .story-block__figure { max-width: 100%; }
   .cart-line { grid-template-columns: 60px 1fr; grid-template-areas: "fig info" "fig qty" "fig total"; row-gap: 6px; }
   .cart-line__figure { grid-area: fig; height: 60px; }
   .cart-line__figure img { height: 48px; }

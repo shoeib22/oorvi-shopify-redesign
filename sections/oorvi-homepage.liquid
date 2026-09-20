@@ -41,7 +41,7 @@
 </div>
 
 <!-- MANIFESTO -->
-<section class="manifesto">
+<section class="manifesto" style="background-image: linear-gradient(rgba(19,36,26,.72), rgba(15,28,20,.85)), url('{{ 'lifestyle-manifesto-drip.jpg' | asset_url }}');">
   <div class="manifesto__lines reveal">
     <p class="manifesto__line manifesto__line--lg">Not manufactured.</p>
     <p class="manifesto__line manifesto__line--xl">Pressed like it<br><span class="manifesto__accent">used to be</span>.</p>
@@ -51,16 +51,21 @@
 
 <!-- OUR CRAFT -->
 <section class="craft" id="craft">
-  <div class="craft__intro reveal">
-    <p class="eyebrow">Our Craft</p>
-    <h2 class="display display--italic">Pressed once,<br>never refined.</h2>
-    <p class="body-lg">
-      Single-pressed cold-pressed oil is extracted through mechanical pressing at
-      low temperature — the first pressing only, the highest quality there is.
-      Nothing is refined out, so the natural flavour, aroma and nutrients of the
-      seed stay exactly as they were.
-    </p>
-    <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}" class="btn btn--ghost">Read the full story</a>
+  <div class="craft__top reveal">
+    <div class="craft__intro">
+      <p class="eyebrow">Our Craft</p>
+      <h2 class="display display--italic">Pressed once,<br>never refined.</h2>
+      <p class="body-lg">
+        Single-pressed cold-pressed oil is extracted through mechanical pressing at
+        low temperature — the first pressing only, the highest quality there is.
+        Nothing is refined out, so the natural flavour, aroma and nutrients of the
+        seed stay exactly as they were.
+      </p>
+      <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}" class="btn btn--ghost">Read the full story</a>
+    </div>
+    <div class="craft__figure">
+      <img src="{{ 'lifestyle-craft-pour.jpg' | asset_url }}" alt="Oorvi cold-pressed oil poured into a bowl" loading="lazy">
+    </div>
   </div>
 
   <div class="process reveal">
@@ -116,6 +121,10 @@
       Every bottle shows its true colour instead of a studio render — the
       pressing never changes, only the seed does.
     </p>
+  </div>
+
+  <div class="range__lineup reveal">
+    <img src="{{ 'lifestyle-range-lineup.jpg' | asset_url }}" alt="The full Oorvi range lined up together" loading="lazy">
   </div>
 
   <div class="filters reveal" id="filters">
