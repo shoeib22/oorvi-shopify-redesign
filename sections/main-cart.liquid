@@ -5,7 +5,7 @@
 
 <div class="cart-page">
   {% if cart.item_count > 0 %}
-    {% form 'cart' %}
+    {% form 'cart', cart %}
       <div class="cart-table">
         {% for item in cart.items %}
           <div class="cart-line">
