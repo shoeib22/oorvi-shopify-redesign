@@ -660,6 +660,18 @@ section { position: relative; }
 .page-hero .display { color: var(--paper); }
 .page-hero__sub { color: #f1e6c9ad; max-width: 56ch; margin: 20px auto 0; text-align: center; font-size: 17px; line-height: 1.65; }
 
+/* -- Generic page content (fallback for admin-authored pages) ------------- */
+.page-prose { max-width: 720px; margin: 0 auto; padding: 90px clamp(20px, 4vw, 56px) 120px; font-size: 17px; line-height: 1.7; color: #151109c2; }
+.page-prose h1, .page-prose h2, .page-prose h3 { font-family: var(--font-display); color: var(--ink); line-height: 1.2; margin: 1.4em 0 .5em; }
+.page-prose h1:first-child, .page-prose h2:first-child, .page-prose h3:first-child { margin-top: 0; }
+.page-prose h2 { font-size: 32px; }
+.page-prose h3 { font-size: 24px; }
+.page-prose p { margin: 0 0 1.2em; }
+.page-prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.page-prose ul, .page-prose ol { margin: 0 0 1.2em; padding-left: 1.4em; }
+.page-prose li { margin-bottom: .4em; }
+.page-prose img { max-width: 100%; border-radius: var(--radius); margin: 1.5em 0; }
+
 /* -- Lookbook mosaic (Nune-inspired editorial product grid) --------------- */
 .lookbook { max-width: var(--container); margin: 0 auto; padding: 110px clamp(20px, 4vw, 56px); }
 .lookbook__head { max-width: 640px; margin: 0 auto 60px; text-align: center; }
