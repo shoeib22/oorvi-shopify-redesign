@@ -126,15 +126,7 @@ section { position: relative; }
 .btn--ghost-dark { border-color: var(--dark-line); color: var(--paper); }
 .btn--ghost-dark:hover { border-color: var(--gold-hover); color: var(--gold-hover); }
 
-/* -- Topline + nav -------------------------------------------------------- */
-.topline {
-  background: var(--ink);
-  color: var(--paper-soft);
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: .04em;
-  padding: 9px 16px;
-}
+/* -- Nav -------------------------------------------------------------------- */
 .nav {
   position: sticky;
   top: 0;
@@ -302,7 +294,7 @@ section { position: relative; }
 
 /* -- Manifesto (full-bleed poster moment) ------------------------------- */
 .manifesto {
-  background: var(--green);
+  background: var(--green) center / cover no-repeat;
   color: var(--paper);
   padding: clamp(90px, 14vw, 180px) clamp(20px, 4vw, 56px);
   text-align: center;
@@ -328,7 +320,10 @@ section { position: relative; }
 
 /* -- Craft / process ---------------------------------------------------- */
 .craft { padding: 120px clamp(20px, 4vw, 56px) 90px; max-width: var(--container); margin: 0 auto; }
-.craft__intro { max-width: 640px; }
+.craft__top { display: grid; grid-template-columns: 1.05fr .95fr; gap: 60px; align-items: center; }
+.craft__intro { max-width: 560px; }
+.craft__figure { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; }
+.craft__figure img { width: 100%; height: 100%; object-fit: cover; }
 .process {
   margin-top: 76px;
   display: grid;
@@ -394,6 +389,9 @@ section { position: relative; }
   flex-wrap: wrap;
 }
 .range__sub { color: #15110999; margin-top: 6px; align-self: flex-end; }
+
+.range__lineup { max-width: var(--container); margin: 50px auto 0; border-radius: var(--radius); overflow: hidden; }
+.range__lineup img { width: 100%; height: auto; display: block; }
 
 .filters { max-width: var(--container); margin: 46px auto 0; display: flex; gap: 10px; flex-wrap: wrap; }
 .filter {
@@ -707,6 +705,39 @@ section { position: relative; }
 .promise-list { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 18px; }
 .promise-list li { display: flex; gap: 16px; align-items: baseline; font-size: 16px; line-height: 1.5; }
 .promise-list li::before { content: "—"; color: var(--gold); flex-shrink: 0; }
+.story-block__figure { margin-top: 36px; max-width: 480px; border-radius: var(--radius); overflow: hidden; }
+.story-block__figure img { width: 100%; display: block; }
+
+/* -- Campaign gallery (Our Story) ------------------------------------------ */
+.campaign { background: var(--ink); color: var(--paper); padding: 110px 0; overflow: hidden; }
+.campaign__head { max-width: var(--container); margin: 0 auto 40px; padding: 0 clamp(20px, 4vw, 56px); display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.campaign__head .display { color: var(--paper); }
+.campaign__hint { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #f1e6c973; display: flex; align-items: center; gap: 8px; transition: opacity .3s var(--ease); }
+.campaign__hint svg { animation: campaignNudge 1.8s ease-in-out infinite; }
+@keyframes campaignNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+.campaign__scroll {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 0 clamp(20px, 4vw, 56px) 4px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.campaign__scroll::-webkit-scrollbar { display: none; }
+.campaign__scroll img {
+  height: 420px;
+  width: auto;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  scroll-snap-align: start;
+}
+.campaign__track { max-width: var(--container); margin: 22px auto 0; padding: 0 clamp(20px, 4vw, 56px); }
+.campaign__track-bar { height: 2px; background: var(--dark-line-soft); border-radius: 999px; overflow: hidden; }
+.campaign__track-fill { height: 100%; width: 25%; background: var(--gold-hover); border-radius: 999px; transition: width .15s linear; }
+@media (prefers-reduced-motion: reduce) {
+  .campaign__hint svg { animation: none; }
+}
 
 /* -- Shop (collection) page ------------------------------------------------- */
 .shop-page { padding: 100px clamp(20px, 4vw, 56px) 140px; max-width: var(--container); margin: 0 auto; }
@@ -788,7 +819,10 @@ section { position: relative; }
 .cart-summary__note { font-size: 12.5px; color: #15110985; }
 
 /* -- Contact page form -------------------------------------------------------- */
-.contact-form { max-width: var(--container); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px) 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+/* Named contact-layout, not contact-form: Shopify's {% form 'contact' %}
+   tag auto-assigns class="contact-form" to the <form> it renders, which
+   would otherwise collide with this wrapper's grid styles. */
+.contact-layout { max-width: var(--container); margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px) 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 .contact-form__field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
 .contact-form__field label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); }
 .contact-form__field input, .contact-form__field textarea {
@@ -813,6 +847,8 @@ section { position: relative; }
   .nav__links { display: none; }
   .nav__menu-btn { display: flex; }
   .hero { grid-template-columns: 1fr; min-height: auto; gap: 0; padding-right: clamp(20px, 4vw, 56px); }
+  .craft__top { grid-template-columns: 1fr; gap: 34px; }
+  .craft__figure { aspect-ratio: 16 / 10; order: -1; }
   .hero__content { padding: 56px 0 20px; max-width: 100%; margin-right: 0; }
   .hero__title { font-size: clamp(44px, 12vw, 72px); }
   .hero__stage { height: 52vh; }
@@ -830,7 +866,7 @@ section { position: relative; }
   .product { grid-template-columns: 1fr; }
   .product__gallery { position: static; min-height: 360px; }
   .lookbook__grid { grid-template-columns: repeat(2, 1fr); }
-  .contact-form { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
   .cart-page { grid-template-columns: 1fr; }
   .cart-summary { position: static; }
   .account-page { grid-template-columns: 1fr; }
@@ -847,6 +883,8 @@ section { position: relative; }
   .newsletter__field { width: 100%; }
   .newsletter__field input { flex: 1; min-width: 0; }
   .lookbook__grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .campaign__scroll img { height: 280px; }
+  .story-block__figure { max-width: 100%; }
   .cart-line { grid-template-columns: 60px 1fr; grid-template-areas: "fig info" "fig qty" "fig total"; row-gap: 6px; }
   .cart-line__figure { grid-area: fig; height: 60px; }
   .cart-line__figure img { height: 48px; }

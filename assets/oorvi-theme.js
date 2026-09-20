@@ -45,6 +45,23 @@
 
   applyFilter("all");
 
+  // -- Campaign gallery scroll progress -----------------------------------
+  var campaignScroll = document.getElementById("campaignScroll");
+  var campaignFill = document.getElementById("campaignTrackFill");
+  var campaignHint = document.querySelector(".campaign__hint");
+  if (campaignScroll && campaignFill) {
+    var updateCampaignFill = function () {
+      var max = campaignScroll.scrollWidth - campaignScroll.clientWidth;
+      var pct = max > 0 ? (campaignScroll.scrollLeft / max) * 100 : 0;
+      campaignFill.style.width = Math.max(12, pct) + "%";
+      if (campaignHint) {
+        campaignHint.style.opacity = campaignScroll.scrollLeft > 20 ? "0" : "1";
+      }
+    };
+    campaignScroll.addEventListener("scroll", updateCampaignFill, { passive: true });
+    updateCampaignFill();
+  }
+
   // -- Scroll reveal -----------------------------------------------------
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
