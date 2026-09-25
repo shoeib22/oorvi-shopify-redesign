@@ -1,60 +1,79 @@
-<div class="product">
-  <div class="product__gallery">
-    {% if product.featured_image %}
-      <img
-        src="{{ product.featured_image | image_url: width: 800 }}"
-        alt="{{ product.featured_image.alt | default: product.title }}"
-        width="500"
-        height="760"
-      >
-    {% endif %}
-  </div>
+<div class="font-sans antialiased text-brand-textDark bg-brand-bg">
+  <div class="max-w-7xl mx-auto px-6 py-12 md:py-24 w-full grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
 
-  <div class="product__info">
-    <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="product__back">&larr; Back to shop</a>
-    <h1 class="product__title">{{ product.title }}</h1>
-    <p class="product__price">
-      {% if product.compare_at_price > product.price %}
-        <s>{{ product.compare_at_price | money }}</s>
+    <!-- Image -->
+    <div class="relative h-[420px] md:h-[720px] md:sticky md:top-28 bg-brand-card rounded-3xl flex items-center justify-center overflow-hidden">
+      <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="absolute top-6 left-6 w-10 h-10 bg-white/70 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition z-20" aria-label="Back to shop">
+        <i class="fa-solid fa-arrow-left text-brand-textDark"></i>
+      </a>
+      {% if product.featured_image %}
+        <img
+          src="{{ product.featured_image | image_url: width: 800 }}"
+          alt="{{ product.featured_image.alt | default: product.title }}"
+          width="500"
+          height="760"
+          class="max-h-[80%] w-auto object-contain drop-shadow-2xl"
+        >
       {% endif %}
-      {{ product.price | money }}
-    </p>
+    </div>
 
-    {% if product.description != blank %}
-      <div class="product__description">{{ product.description }}</div>
-    {% endif %}
-
-    {% form 'product', product %}
-      {% unless product.has_only_default_variant %}
-        <div class="product__variant">
-          <label for="product-variant" class="visually-hidden">Variant</label>
-          <select id="product-variant" name="id">
-            {% for variant in product.variants %}
-              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
-                {{ variant.title }} {% unless variant.available %}— Sold out{% endunless %}
-              </option>
-            {% endfor %}
-          </select>
+    <!-- Details -->
+    <div class="flex flex-col justify-center">
+      {% if product.tags.size > 0 %}
+        <div class="flex items-center gap-3 mb-6 flex-wrap">
+          {% for tag in product.tags limit: 2 %}
+            <span class="text-xs font-bold tracking-widest text-brand-olive uppercase bg-brand-olive/10 px-3 py-1 rounded-full">{{ tag }}</span>
+          {% endfor %}
         </div>
-      {% else %}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-      {% endunless %}
+      {% endif %}
 
-      <div class="product__qty">
-        <button type="button" aria-label="Decrease quantity" onclick="this.nextElementSibling.stepDown()">&minus;</button>
-        <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
-        <button type="button" aria-label="Increase quantity" onclick="this.previousElementSibling.stepUp()">&plus;</button>
+      <h1 class="font-serif text-5xl lg:text-6xl text-brand-textDark mb-4 leading-none">{{ product.title }}</h1>
+
+      <p class="text-2xl text-brand-textLight mb-8">
+        {% if product.compare_at_price > product.price %}
+          <s class="text-brand-textLight/70 text-lg mr-2">{{ product.compare_at_price | money }}</s>
+        {% endif %}
+        {{ product.price | money }}
+      </p>
+
+      {% if product.description != blank %}
+        <div class="text-brand-textLight leading-relaxed mb-10 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_a]:text-brand-olive [&_a]:underline">{{ product.description }}</div>
+      {% endif %}
+
+      {% form 'product', product %}
+        <div class="flex items-center gap-4 mb-10">
+          {% unless product.has_only_default_variant %}
+            <div class="flex-1 max-w-[220px]">
+              <label for="product-variant" class="sr-only">Variant</label>
+              <select id="product-variant" name="id" class="w-full border border-brand-border rounded-full px-5 py-3.5 bg-white text-brand-textDark focus:outline-none focus:border-brand-olive">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                    {{ variant.title }} {% unless variant.available %}— Sold out{% endunless %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {% endunless %}
+
+          <div class="flex items-center border border-brand-border rounded-full p-1 bg-white shrink-0">
+            <button type="button" aria-label="Decrease quantity" onclick="this.nextElementSibling.stepDown()" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&minus;</button>
+            <input type="number" name="quantity" value="1" min="1" aria-label="Quantity" class="w-10 text-center font-medium bg-transparent focus:outline-none">
+            <button type="button" aria-label="Increase quantity" onclick="this.previousElementSibling.stepUp()" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&plus;</button>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-brand-textDark hover:bg-brand-olive text-white py-4 rounded-full font-medium transition duration-300" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}Add to Cart — {{ product.price | money }}{% else %}Sold Out{% endif %}
+        </button>
+      {% endform %}
+
+      <div class="flex items-center gap-6 mt-10 pt-8 border-t border-brand-border/50 flex-wrap">
+        <span class="text-[0.7rem] font-bold tracking-widest text-brand-olive uppercase">FSSAI Licensed</span>
+        <span class="text-[0.7rem] font-bold tracking-widest text-brand-olive uppercase">ISO 9000:2015</span>
+        <span class="text-[0.7rem] font-bold tracking-widest text-brand-olive uppercase">ISO 22000:2018</span>
       </div>
-
-      <button type="submit" class="btn btn--gold product__submit" {% unless product.available %}disabled{% endunless %}>
-        {% if product.available %}Add to cart{% else %}Sold out{% endif %}
-      </button>
-    {% endform %}
-
-    <div class="product__trust">
-      <span>FSSAI Licensed</span>
-      <span>ISO 9000:2015</span>
-      <span>ISO 22000:2018</span>
     </div>
   </div>
 </div>

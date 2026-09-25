@@ -1,11 +1,10 @@
 # Oorvi — Multipage Redesign (Shopify Theme)
 
 A Shopify Online Store 2.0 theme for [oorvi.store](https://oorvi.store) — a
-light, editorial, cream-canvas design modelled on category peers Gramiyaa
-and Nune, with Oorvi's own gold/ink accent system and real product
-photography. A real multipage site: Home, Shop, Product, Our Story, Contact,
-Cart, and customer accounts (login/register/order history/addresses) all
-exist as separate pages with shared navigation.
+warm, earthy cream-and-olive design ("Goodness. Naturally.") with real
+product photography. A real multipage site: Home, Shop, Product, Our Story,
+Contact, Cart, and customer accounts (login/register/order history/
+addresses) all exist as separate pages with shared navigation.
 
 ## Pages
 
@@ -90,18 +89,23 @@ Any future `git push` to `main` syncs automatically to the connected theme.
 
 ## How this was built
 
-Plain hand-written Liquid, CSS, and vanilla JS — no build step. Everything
-lives directly in this repo: `assets/oorvi-theme.css` is the site-wide
-stylesheet, `assets/oorvi-theme.js` handles the mobile menu, range/shop
-filters, and scroll reveal. All `.png` files are the real Oorvi product
-photography and logo, pulled from the brand's own asset kit.
+Hand-written Liquid with Tailwind utility classes (loaded via the Tailwind
+CDN build, configured with Oorvi's `brand-*` color/font tokens in
+`layout/theme.liquid`) and a small amount of vanilla JS — no build step.
+`assets/oorvi-theme.css` only carries the handful of cross-page mechanics
+Tailwind utilities can't express on their own (the mobile menu's off-canvas
+transform, a hide-scrollbar utility, accessibility helpers); every page's
+actual visual design lives inline as Tailwind classes. `assets/oorvi-theme.js`
+handles the mobile menu toggle and an opt-in scroll-reveal effect. All
+`.png`/`.jpg` files are the real Oorvi product photography and logo, pulled
+from the brand's own asset kit.
 
 An earlier version of this homepage used a Three.js scroll-scrubbed 3D
-flythrough (built from a separate Vite + TypeScript source project). That
-direction was dropped in favor of this lighter, photography-led design that
-follows the visual language of category peers more closely — first as a
-single redesigned homepage, then expanded into this full multipage site
-with working shop, cart, and customer accounts.
+flythrough (built from a separate Vite + TypeScript source project), then a
+gold/ink editorial direction. Both were dropped in favor of this warmer
+cream-and-olive design, first as a redesigned homepage, then expanded across
+the full multipage site — Shop, Product, Our Story, Contact, Cart, and
+customer accounts all now share the same design system.
 
 ### Known simplifications
 

@@ -1,51 +1,117 @@
-<section class="page-hero">
-  <p class="eyebrow eyebrow--light">Get in Touch</p>
-  <h1 class="display">We'd love to<br>hear from you.</h1>
-  <p class="page-hero__sub">Questions about an order, wholesale, or just want to say hello — reach us directly or send a message below.</p>
-</section>
+<div class="font-sans antialiased text-brand-textDark bg-brand-bg relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-card/40 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
-<div class="contact-layout">
-  <div class="reveal">
-    {% form 'contact' %}
-      {% if form.posted_successfully? %}
-        <p class="contact-form__success">Thanks — your message has reached us. We'll reply within a day or two.</p>
-      {% else %}
-        {% if form.errors %}
-          <p class="newsletter__error" style="color:#b5651d;">{{ form.errors | default_errors }}</p>
-        {% endif %}
-        <div class="contact-form__field">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="contact[name]" required>
-        </div>
-        <div class="contact-form__field">
-          <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" name="contact[email]" required>
-        </div>
-        <div class="contact-form__field">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="contact[body]" rows="6" required></textarea>
-        </div>
-        <button type="submit" class="btn btn--gold">Send message</button>
-      {% endif %}
-    {% endform %}
-  </div>
+  <!-- Header -->
+  <section class="w-full relative pt-32 pb-16 px-6 md:px-12 flex flex-col items-center justify-center text-center">
+    <p class="uppercase tracking-[0.4em] text-xs font-semibold text-brand-olive mb-8">Inquiries & Connections</p>
+    <h1 class="text-5xl md:text-7xl font-serif text-brand-textDark leading-[0.95] tracking-tight mb-4">
+      Let's craft<br>
+      <span class="italic text-brand-olive font-medium">a conversation.</span>
+    </h1>
+    <div class="w-px h-20 bg-gradient-to-b from-brand-olive to-transparent mt-8"></div>
+  </section>
 
-  <div class="contact__grid contact__grid--plain reveal">
-    <div class="contact__item">
-      <span>Phone</span>
-      <a href="tel:+919642114488">+91 96421 14488</a>
-    </div>
-    <div class="contact__item">
-      <span>Email</span>
-      <a href="mailto:care@oorvi.store">care@oorvi.store</a>
-    </div>
-    <div class="contact__item">
-      <span>Visit</span>
-      <p>House No. 7-90/4, Brundavan Colony, Kokapet, Hyderabad, Telangana 500075</p>
-    </div>
-    <div class="contact__item">
-      <span>Hours</span>
-      <p>Mon–Sat, 10 AM–6 PM IST</p>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 w-full pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+      <!-- Direct channels -->
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-32">
+          <h3 class="text-xs font-bold tracking-[0.2em] text-brand-textLight uppercase mb-8 border-b border-brand-border/60 pb-6">Direct Channels</h3>
+          <div class="space-y-10">
+            <div class="flex items-start gap-5">
+              <div class="w-10 h-10 rounded-full border border-brand-olive/30 flex items-center justify-center text-brand-olive shrink-0 mt-1">
+                <i class="fa-solid fa-location-dot text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-2xl text-brand-textDark mb-2">Visit</h4>
+                <p class="text-sm text-brand-textLight leading-relaxed">
+                  House No. 7-90/4, Brundavan Colony, Kokapet<br>
+                  Hyderabad, Telangana 500075<br>
+                  India
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-5">
+              <div class="w-10 h-10 rounded-full border border-brand-olive/30 flex items-center justify-center text-brand-olive shrink-0 mt-1">
+                <i class="fa-solid fa-phone text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-2xl text-brand-textDark mb-2">Call</h4>
+                <a href="tel:+919642114488" class="text-brand-olive hover:text-brand-textDark transition-colors text-lg border-b border-brand-olive/30 pb-0.5">+91 96421 14488</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-5">
+              <div class="w-10 h-10 rounded-full border border-brand-olive/30 flex items-center justify-center text-brand-olive shrink-0 mt-1">
+                <i class="fa-solid fa-envelope text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-2xl text-brand-textDark mb-2">Email</h4>
+                <a href="mailto:care@oorvi.store" class="text-brand-olive hover:text-brand-textDark transition-colors text-lg border-b border-brand-olive/30 pb-0.5">care@oorvi.store</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-5">
+              <div class="w-10 h-10 rounded-full border border-brand-olive/30 flex items-center justify-center text-brand-olive shrink-0 mt-1">
+                <i class="fa-regular fa-clock text-sm"></i>
+              </div>
+              <div>
+                <h4 class="font-serif text-2xl text-brand-textDark mb-2">Hours</h4>
+                <p class="text-sm text-brand-textLight leading-relaxed">Monday — Saturday<br>10:00 AM — 6:00 PM IST</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-7 mt-4 lg:mt-0">
+        <div class="bg-brand-card/40 p-8 md:p-12 rounded-3xl border border-brand-border/50">
+          <h3 class="font-serif text-3xl md:text-4xl text-brand-textDark mb-4">Send a dispatch.</h3>
+          <p class="text-brand-textLight mb-10 leading-relaxed">
+            Whether you have a question about our cold-pressed extraction process, bulk orders, or shipping,
+            our team is ready to assist you.
+          </p>
+
+          {% form 'contact' %}
+            {% if form.posted_successfully? %}
+              <p class="text-brand-olive font-semibold text-lg">Thanks — your message has reached us. We'll reply within a day or two.</p>
+            {% else %}
+              {% if form.errors %}
+                <p class="text-red-700 text-sm mb-6">{{ form.errors | default_errors }}</p>
+              {% endif %}
+              <div class="space-y-8">
+                <div class="relative">
+                  <label for="contact-name" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Name</label>
+                  <input type="text" id="contact-name" name="contact[name]" required
+                    class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+                </div>
+                <div class="relative">
+                  <label for="contact-email" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Email Address</label>
+                  <input type="email" id="contact-email" name="contact[email]" required
+                    class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+                </div>
+                <div class="relative">
+                  <label for="contact-message" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Message</label>
+                  <textarea id="contact-message" name="contact[body]" rows="6" required
+                    class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark resize-none focus:outline-none focus:border-brand-olive transition-colors"></textarea>
+                </div>
+              </div>
+              <div class="pt-8">
+                <button type="submit" class="group inline-flex items-center justify-center bg-brand-textDark text-white px-10 py-5 rounded-full transition-all duration-300 w-full md:w-auto hover:bg-brand-olive">
+                  <span class="text-sm font-bold tracking-wider uppercase flex items-center gap-3">
+                    Transmit Message
+                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                  </span>
+                </button>
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -1,42 +1,49 @@
-<section class="page-hero">
-  <p class="eyebrow eyebrow--light">Account</p>
-  <h1 class="display">Create your account</h1>
-</section>
+<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
+  <section class="w-full pt-28 pb-12 px-6 text-center">
+    <p class="uppercase tracking-[0.3em] text-xs font-semibold text-brand-textLight mb-4">Account</p>
+    <h1 class="text-4xl md:text-6xl font-serif text-brand-textDark">Create your account</h1>
+  </section>
 
-<div class="auth-page">
-  <div class="auth-card reveal">
-    {% form 'create_customer' %}
-      {% if form.errors %}
-        <p class="newsletter__error" style="color:#b5651d;">{{ form.errors | default_errors }}</p>
-      {% endif %}
+  <div class="max-w-md mx-auto px-6 pb-24">
+    <div class="bg-white border border-brand-border/60 rounded-3xl p-8 md:p-10">
+      {% form 'create_customer' %}
+        {% if form.errors %}
+          <p class="text-red-700 text-sm mb-6">{{ form.errors | default_errors }}</p>
+        {% endif %}
 
-      <div class="contact-form__field">
-        <label for="register-first-name">First name</label>
-        <input type="text" id="register-first-name" name="customer[first_name]" autocomplete="given-name">
-      </div>
+        <div class="grid grid-cols-2 gap-5 mb-6">
+          <div>
+            <label for="register-first-name" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">First name</label>
+            <input type="text" id="register-first-name" name="customer[first_name]" autocomplete="given-name"
+              class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+          </div>
+          <div>
+            <label for="register-last-name" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Last name</label>
+            <input type="text" id="register-last-name" name="customer[last_name]" autocomplete="family-name"
+              class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+          </div>
+        </div>
 
-      <div class="contact-form__field">
-        <label for="register-last-name">Last name</label>
-        <input type="text" id="register-last-name" name="customer[last_name]" autocomplete="family-name">
-      </div>
+        <div class="mb-6">
+          <label for="register-email" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Email</label>
+          <input type="email" id="register-email" name="customer[email]" autocomplete="email" required
+            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+        </div>
 
-      <div class="contact-form__field">
-        <label for="register-email">Email</label>
-        <input type="email" id="register-email" name="customer[email]" autocomplete="email" required>
-      </div>
+        <div class="mb-8">
+          <label for="register-password" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Password</label>
+          <input type="password" id="register-password" name="customer[password]" autocomplete="new-password" required
+            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+        </div>
 
-      <div class="contact-form__field">
-        <label for="register-password">Password</label>
-        <input type="password" id="register-password" name="customer[password]" autocomplete="new-password" required>
-      </div>
+        <button type="submit" class="w-full bg-brand-olive hover:bg-brand-oliveHover text-white py-4 rounded-full uppercase tracking-widest text-xs font-bold transition shadow-lg shadow-brand-olive/20">Create Account</button>
+      {% endform %}
+    </div>
 
-      <button type="submit" class="btn btn--gold product__submit">Create account</button>
-    {% endform %}
+    <p class="text-center mt-8 text-sm text-brand-textLight">
+      Already have an account? <a href="{{ routes.account_login_url }}" class="text-brand-olive font-semibold">Log in</a>
+    </p>
   </div>
-
-  <p class="auth-switch reveal">
-    Already have an account? <a href="{{ routes.account_login_url }}">Log in</a>
-  </p>
 </div>
 
 {% schema %}

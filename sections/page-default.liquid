@@ -1,9 +1,11 @@
-<section class="page-hero">
-  <h1 class="display">{{ page.title }}</h1>
-</section>
+<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
+  <section class="w-full pt-28 pb-16 px-6 text-center">
+    <h1 class="text-4xl md:text-6xl font-serif text-brand-textDark">{{ page.title }}</h1>
+  </section>
 
-<div class="page-prose">
-  {{ page.content }}
+  <div class="max-w-3xl mx-auto px-6 pb-24 text-brand-textLight leading-relaxed text-lg">
+    {{ page.content }}
+  </div>
 </div>
 
 {% schema %}

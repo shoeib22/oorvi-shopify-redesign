@@ -1,50 +1,55 @@
-<section class="page-hero">
-  <p class="eyebrow eyebrow--light">Account</p>
-  <h1 class="display">Log in</h1>
-</section>
+<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
+  <section class="w-full pt-28 pb-12 px-6 text-center">
+    <p class="uppercase tracking-[0.3em] text-xs font-semibold text-brand-textLight mb-4">Account</p>
+    <h1 class="text-4xl md:text-6xl font-serif text-brand-textDark">Log in</h1>
+  </section>
 
-<div class="auth-page">
-  <div class="auth-card reveal">
-    {% form 'customer_login' %}
-      {% if form.errors %}
-        <p class="newsletter__error" style="color:#b5651d;">{{ form.errors | default_errors }}</p>
-      {% endif %}
-
-      <div class="contact-form__field">
-        <label for="customer-email">Email</label>
-        <input type="email" id="customer-email" name="customer[email]" autocomplete="email" required>
-      </div>
-
-      <div class="contact-form__field">
-        <label for="customer-password">Password</label>
-        <input type="password" id="customer-password" name="customer[password]" autocomplete="current-password" required>
-      </div>
-
-      <button type="submit" class="btn btn--gold product__submit">Log in</button>
-    {% endform %}
-
-    <details class="auth-recover">
-      <summary>Forgot your password?</summary>
-      {% form 'recover_customer_password' %}
-        {% if form.posted_successfully? %}
-          <p class="contact-form__success">If that email has an account, a reset link is on its way.</p>
-        {% else %}
-          {% if form.errors %}
-            <p class="newsletter__error" style="color:#b5651d;">{{ form.errors | default_errors }}</p>
-          {% endif %}
-          <div class="contact-form__field">
-            <label for="recover-email">Email</label>
-            <input type="email" id="recover-email" name="email" autocomplete="email" required>
-          </div>
-          <button type="submit" class="btn btn--ghost product__submit">Send reset link</button>
+  <div class="max-w-md mx-auto px-6 pb-24">
+    <div class="bg-white border border-brand-border/60 rounded-3xl p-8 md:p-10">
+      {% form 'customer_login' %}
+        {% if form.errors %}
+          <p class="text-red-700 text-sm mb-6">{{ form.errors | default_errors }}</p>
         {% endif %}
-      {% endform %}
-    </details>
-  </div>
 
-  <p class="auth-switch reveal">
-    New to Oorvi? <a href="{{ routes.account_register_url }}">Create an account</a>
-  </p>
+        <div class="mb-6">
+          <label for="customer-email" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Email</label>
+          <input type="email" id="customer-email" name="customer[email]" autocomplete="email" required
+            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+        </div>
+
+        <div class="mb-8">
+          <label for="customer-password" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Password</label>
+          <input type="password" id="customer-password" name="customer[password]" autocomplete="current-password" required
+            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+        </div>
+
+        <button type="submit" class="w-full bg-brand-olive hover:bg-brand-oliveHover text-white py-4 rounded-full uppercase tracking-widest text-xs font-bold transition shadow-lg shadow-brand-olive/20">Log In</button>
+      {% endform %}
+
+      <details class="mt-8 border-t border-brand-border/50 pt-6">
+        <summary class="cursor-pointer text-sm font-semibold text-brand-olive">Forgot your password?</summary>
+        {% form 'recover_customer_password' %}
+          {% if form.posted_successfully? %}
+            <p class="text-brand-olive font-medium mt-4">If that email has an account, a reset link is on its way.</p>
+          {% else %}
+            {% if form.errors %}
+              <p class="text-red-700 text-sm mt-4">{{ form.errors | default_errors }}</p>
+            {% endif %}
+            <div class="mt-5 mb-4">
+              <label for="recover-email" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Email</label>
+              <input type="email" id="recover-email" name="email" autocomplete="email" required
+                class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
+            </div>
+            <button type="submit" class="w-full border border-brand-border text-brand-textDark py-3.5 rounded-full uppercase tracking-widest text-xs font-bold hover:border-brand-olive hover:text-brand-olive transition">Send Reset Link</button>
+          {% endif %}
+        {% endform %}
+      </details>
+    </div>
+
+    <p class="text-center mt-8 text-sm text-brand-textLight">
+      New to Oorvi? <a href="{{ routes.account_register_url }}" class="text-brand-olive font-semibold">Create an account</a>
+    </p>
+  </div>
 </div>
 
 {% schema %}

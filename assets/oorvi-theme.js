@@ -1,5 +1,5 @@
-// Oorvi homepage — lightweight vanilla JS (no build step, no 3D dependency).
-// Handles: mobile menu toggle, range filters, scroll reveal.
+// Oorvi theme — lightweight vanilla JS (no build step).
+// Handles: mobile menu toggle, scroll reveal.
 
 (function () {
   "use strict";
@@ -21,45 +21,6 @@
     mobileMenu.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", closeMenu);
     });
-  }
-
-  // -- Range filters -----------------------------------------------------
-  var filterButtons = document.querySelectorAll(".filter");
-  var cards = document.querySelectorAll(".oil-card");
-
-  function applyFilter(filter) {
-    cards.forEach(function (card) {
-      var cats = (card.getAttribute("data-categories") || "").split(",");
-      var show = filter === "all" || cats.indexOf(filter) !== -1;
-      card.classList.toggle("is-visible", show);
-    });
-  }
-
-  filterButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      filterButtons.forEach(function (b) { b.classList.remove("is-active"); });
-      btn.classList.add("is-active");
-      applyFilter(btn.getAttribute("data-filter"));
-    });
-  });
-
-  applyFilter("all");
-
-  // -- Campaign gallery scroll progress -----------------------------------
-  var campaignScroll = document.getElementById("campaignScroll");
-  var campaignFill = document.getElementById("campaignTrackFill");
-  var campaignHint = document.querySelector(".campaign__hint");
-  if (campaignScroll && campaignFill) {
-    var updateCampaignFill = function () {
-      var max = campaignScroll.scrollWidth - campaignScroll.clientWidth;
-      var pct = max > 0 ? (campaignScroll.scrollLeft / max) * 100 : 0;
-      campaignFill.style.width = Math.max(12, pct) + "%";
-      if (campaignHint) {
-        campaignHint.style.opacity = campaignScroll.scrollLeft > 20 ? "0" : "1";
-      }
-    };
-    campaignScroll.addEventListener("scroll", updateCampaignFill, { passive: true });
-    updateCampaignFill();
   }
 
   // -- Scroll reveal -----------------------------------------------------
