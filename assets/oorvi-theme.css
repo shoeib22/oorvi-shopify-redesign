@@ -11,6 +11,21 @@
 * { box-sizing: border-box; }
 body { position: relative; }
 
+/* -- Homepage hero background photo --------------------------------------
+   Only applied from the lg breakpoint up, matching the point where
+   sections/oorvi-homepage.liquid switches the hero grid from a single
+   stacked column to the two-column desktop layout. Below lg the hero
+   photo is rendered as a normal <img> instead (see that file), so this
+   background never bleeds behind the stacked text on mobile/tablet. */
+@media (min-width: 1024px) {
+  .hero-media {
+    background-image: linear-gradient(100deg, rgba(244,241,234,0.9) 0%, rgba(244,241,234,0.65) 32%, rgba(244,241,234,0.2) 52%, rgba(244,241,234,0) 68%), var(--hero-img);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+  }
+}
+
 /* -- Mobile menu (off-canvas, toggled by assets/oorvi-theme.js) ---------- */
 .mobile-menu {
   position: fixed;
