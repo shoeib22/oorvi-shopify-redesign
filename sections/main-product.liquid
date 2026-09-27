@@ -3,7 +3,7 @@
 
     <!-- Image -->
     <div class="relative h-[420px] md:h-[720px] md:sticky md:top-28 bg-brand-card rounded-3xl flex items-center justify-center overflow-hidden">
-      <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="absolute top-6 left-6 w-10 h-10 bg-white/70 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition z-20" aria-label="Back to shop">
+      <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="absolute top-6 left-6 w-10 h-10 bg-white/50 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition z-20" aria-label="Back to shop">
         <i class="fa-solid fa-arrow-left text-brand-textDark"></i>
       </a>
       {% if product.featured_image %}
@@ -19,21 +19,27 @@
 
     <!-- Details -->
     <div class="flex flex-col justify-center">
-      {% if product.tags.size > 0 %}
+      {% if product.tags.size > 0 or product.type != blank %}
         <div class="flex items-center gap-3 mb-6 flex-wrap">
-          {% for tag in product.tags limit: 2 %}
-            <span class="text-xs font-bold tracking-widest text-brand-olive uppercase bg-brand-olive/10 px-3 py-1 rounded-full">{{ tag }}</span>
-          {% endfor %}
+          {% if product.tags.size > 0 %}
+            <span class="text-xs font-bold tracking-widest text-brand-olive uppercase bg-brand-olive/10 px-3 py-1 rounded-full">{{ product.tags.first }}</span>
+          {% endif %}
+          {% if product.type != blank %}
+            <span class="text-xs font-bold tracking-widest text-brand-textDark uppercase bg-brand-border/40 px-3 py-1 rounded-full">{{ product.type }}</span>
+          {% endif %}
         </div>
       {% endif %}
 
-      <h1 class="font-serif text-5xl lg:text-6xl text-brand-textDark mb-4 leading-none">{{ product.title }}</h1>
+      <h1 class="font-serif text-5xl lg:text-7xl text-brand-textDark mb-4 leading-none">{{ product.title }}</h1>
 
       <p class="text-2xl text-brand-textLight mb-8">
         {% if product.compare_at_price > product.price %}
           <s class="text-brand-textLight/70 text-lg mr-2">{{ product.compare_at_price | money }}</s>
         {% endif %}
         {{ product.price | money }}
+        {% unless product.has_only_default_variant %}
+          <span class="text-sm font-normal text-brand-textLight">/ {{ product.selected_or_first_available_variant.title }}</span>
+        {% endunless %}
       </p>
 
       {% if product.description != blank %}
