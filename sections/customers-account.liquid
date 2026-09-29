@@ -11,8 +11,8 @@
       {% if customer.orders.size > 0 %}
         <div class="flex flex-col border-t border-brand-border/60">
           {% for order in customer.orders %}
-            <a href="{{ order.customer_url }}" class="grid grid-cols-2 md:grid-cols-4 gap-3 items-center py-5 border-b border-brand-border/60 text-sm hover:opacity-70 transition">
-              <span class="font-serif text-lg text-brand-textDark">{{ order.name }}</span>
+            <a href="{{ order.customer_url }}" class="grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-1 items-center py-5 border-b border-brand-border/60 text-sm hover:opacity-70 transition">
+              <span class="font-serif text-lg text-brand-textDark col-span-2 sm:col-span-1">{{ order.name }}</span>
               <span class="text-brand-textLight">{{ order.created_at | date: "%d %b %Y" }}</span>
               <span class="text-brand-textLight">{{ order.fulfillment_status_label }}</span>
               <span class="font-semibold text-brand-olive text-right">{{ order.total_price | money }}</span>
