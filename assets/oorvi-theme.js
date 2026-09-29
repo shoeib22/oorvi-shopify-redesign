@@ -117,6 +117,7 @@
 
     var sections = scrollContainer.querySelectorAll(".st-scroll-section");
     var dots = navDots ? navDots.querySelectorAll(".st-nav-dot") : [];
+    var currentIndex = 0;
 
     if ("IntersectionObserver" in window) {
       var scrollObserver = new IntersectionObserver(
@@ -125,6 +126,7 @@
             if (entry.isIntersecting) {
               entry.target.classList.add("is-visible");
               var index = entry.target.id.split("-")[1];
+              currentIndex = parseInt(index, 10) || 0;
               dots.forEach(function (dot) { dot.classList.remove("active"); });
               if (dots[index]) dots[index].classList.add("active");
             }
@@ -137,24 +139,40 @@
       sections.forEach(function (section) { section.classList.add("is-visible"); });
     }
 
+    function goToSection(index) {
+      if (index < 0 || index >= sections.length) return;
+      var target = document.getElementById("section-" + index);
+      if (target) target.scrollIntoView({ behavior: "smooth", inline: "start" });
+    }
+
     dots.forEach(function (dot) {
       dot.addEventListener("click", function () {
-        var targetIndex = dot.getAttribute("data-target");
-        var targetSection = document.getElementById("section-" + targetIndex);
-        if (targetSection) targetSection.scrollIntoView({ behavior: "smooth", inline: "start" });
+        goToSection(parseInt(dot.getAttribute("data-target"), 10));
       });
     });
 
-    // Translate vertical mouse-wheel input into horizontal scroll, so a
-    // regular scroll wheel/trackpad advances through the panels without
-    // requiring a horizontal-scroll gesture.
+    // Translate vertical mouse-wheel/trackpad input into horizontal panel
+    // navigation, so a regular scroll wheel advances through the panels
+    // without needing a horizontal-scroll gesture.
+    //
+    // This container uses scroll-snap-type: x mandatory. Nudging scrollLeft
+    // by the wheel event's small per-notch deltaY (commonly ~100-120px,
+    // versus a full ~1920px panel) fights that mandatory snap: the browser
+    // immediately snaps back to the current panel after every tiny nudge,
+    // so the wheel visually does nothing. Instead, treat each wheel gesture
+    // as "advance one panel" (like the nav dots already do), with a cooldown
+    // so one continuous scroll gesture doesn't fire through multiple panels.
+    var wheelCooldown = false;
+    var wheelCooldownMs = 700;
     scrollContainer.addEventListener(
       "wheel",
       function (evt) {
-        if (evt.deltaY !== 0) {
-          evt.preventDefault();
-          scrollContainer.scrollLeft += evt.deltaY;
-        }
+        if (Math.abs(evt.deltaY) < 2) return;
+        evt.preventDefault();
+        if (wheelCooldown) return;
+        wheelCooldown = true;
+        goToSection(currentIndex + (evt.deltaY > 0 ? 1 : -1));
+        setTimeout(function () { wheelCooldown = false; }, wheelCooldownMs);
       },
       { passive: false }
     );
