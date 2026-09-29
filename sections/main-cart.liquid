@@ -12,25 +12,29 @@
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 items-start">
           <div class="flex flex-col gap-6">
             {% for item in cart.items %}
-              <div class="flex gap-4 md:gap-6 items-center bg-white p-4 rounded-2xl shadow-sm border border-brand-border/40">
-                <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-brand-card border border-black/5 flex items-center justify-center shrink-0 overflow-hidden">
-                  {% if item.image %}
-                    <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}" loading="lazy" width="200" height="200" class="w-full h-full object-contain">
-                  {% endif %}
+              <div class="flex flex-wrap gap-4 items-center bg-white p-4 rounded-2xl shadow-sm border border-brand-border/40">
+                <div class="flex gap-4 items-center flex-1 min-w-[200px]">
+                  <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-brand-card border border-black/5 flex items-center justify-center shrink-0 overflow-hidden">
+                    {% if item.image %}
+                      <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}" loading="lazy" width="200" height="200" class="w-full h-full object-contain">
+                    {% endif %}
+                  </div>
+                  <div class="flex-grow min-w-0">
+                    <h4 class="font-serif text-lg text-brand-textDark leading-tight truncate">{{ item.product.title }}</h4>
+                    {% unless item.variant.title == "Default Title" %}
+                      <p class="text-xs text-brand-textLight mt-1">{{ item.variant.title }}</p>
+                    {% endunless %}
+                    <p class="text-xs text-brand-textLight mt-1">{{ item.final_price | money }} each</p>
+                  </div>
                 </div>
-                <div class="flex-grow min-w-0">
-                  <h4 class="font-serif text-lg text-brand-textDark leading-tight truncate">{{ item.product.title }}</h4>
-                  {% unless item.variant.title == "Default Title" %}
-                    <p class="text-xs text-brand-textLight mt-1">{{ item.variant.title }}</p>
-                  {% endunless %}
-                  <p class="text-xs text-brand-textLight mt-1">{{ item.final_price | money }} each</p>
+                <div class="flex items-center justify-between gap-4 w-full sm:w-auto sm:ml-auto">
+                  <div class="flex items-center border border-brand-border rounded-full p-1 bg-white shrink-0">
+                    <button type="button" aria-label="Decrease quantity" onclick="this.nextElementSibling.stepDown();this.nextElementSibling.form.requestSubmit()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&minus;</button>
+                    <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" aria-label="Quantity" class="w-9 text-center bg-transparent focus:outline-none">
+                    <button type="button" aria-label="Increase quantity" onclick="this.previousElementSibling.stepUp();this.previousElementSibling.form.requestSubmit()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&plus;</button>
+                  </div>
+                  <div class="font-medium text-brand-textDark w-20 text-right shrink-0">{{ item.final_line_price | money }}</div>
                 </div>
-                <div class="flex items-center border border-brand-border rounded-full p-1 bg-white shrink-0">
-                  <button type="button" aria-label="Decrease quantity" onclick="this.nextElementSibling.stepDown();this.nextElementSibling.form.requestSubmit()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&minus;</button>
-                  <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" aria-label="Quantity" class="w-9 text-center bg-transparent focus:outline-none">
-                  <button type="button" aria-label="Increase quantity" onclick="this.previousElementSibling.stepUp();this.previousElementSibling.form.requestSubmit()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&plus;</button>
-                </div>
-                <div class="font-medium text-brand-textDark w-20 text-right shrink-0">{{ item.final_line_price | money }}</div>
               </div>
             {% endfor %}
           </div>
