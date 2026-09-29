@@ -1,19 +1,39 @@
 <div class="font-sans antialiased text-brand-textDark bg-brand-bg">
   <div class="max-w-7xl mx-auto px-6 py-12 md:py-24 w-full grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
 
-    <!-- Image -->
-    <div class="relative h-[420px] md:h-[720px] md:sticky md:top-28 bg-brand-card rounded-3xl flex items-center justify-center overflow-hidden">
-      <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="absolute top-6 left-6 w-10 h-10 bg-white/50 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition z-20" aria-label="Back to shop">
-        <i class="fa-solid fa-arrow-left text-brand-textDark"></i>
-      </a>
-      {% if product.featured_image %}
-        <img
-          src="{{ product.featured_image | image_url: width: 800 }}"
-          alt="{{ product.featured_image.alt | default: product.title }}"
-          width="500"
-          height="760"
-          class="max-h-[80%] w-auto object-contain drop-shadow-2xl"
-        >
+    <!-- Image gallery — main image + clickable thumbnails for every image
+         uploaded on this product (product.images), not just the featured one. -->
+    <div class="md:sticky md:top-28">
+      <div class="relative h-[420px] md:h-[600px] bg-brand-card rounded-3xl flex items-center justify-center overflow-hidden" id="product-gallery-main">
+        <a href="{{ routes.all_products_collection_url | default: routes.collections_url }}" class="absolute top-6 left-6 w-10 h-10 bg-white/50 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition z-20" aria-label="Back to shop">
+          <i class="fa-solid fa-arrow-left text-brand-textDark"></i>
+        </a>
+        {% if product.featured_image %}
+          <img
+            id="product-gallery-image"
+            src="{{ product.featured_image | image_url: width: 800 }}"
+            alt="{{ product.featured_image.alt | default: product.title }}"
+            width="500"
+            height="760"
+            class="max-h-[80%] w-auto object-contain drop-shadow-2xl"
+          >
+        {% endif %}
+      </div>
+
+      {% if product.images.size > 1 %}
+        <div class="flex gap-3 mt-4 overflow-x-auto hide-scrollbar" id="product-gallery-thumbs">
+          {% for image in product.images %}
+            <button
+              type="button"
+              class="product-gallery-thumb w-16 h-16 md:w-20 md:h-20 rounded-xl border-2 {% if forloop.first %}border-brand-olive{% else %}border-transparent{% endif %} shrink-0 overflow-hidden bg-white transition-colors"
+              data-full-src="{{ image | image_url: width: 800 }}"
+              data-alt="{{ image.alt | default: product.title }}"
+              aria-label="Show image {{ forloop.index }} of {{ product.images.size }}"
+            >
+              <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | default: product.title }}" width="160" height="160" class="w-full h-full object-contain" loading="lazy">
+            </button>
+          {% endfor %}
+        </div>
       {% endif %}
     </div>
 

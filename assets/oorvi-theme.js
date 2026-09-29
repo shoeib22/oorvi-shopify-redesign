@@ -23,6 +23,29 @@
     });
   }
 
+  // -- Product image gallery ----------------------------------------------
+  // Only present on sections/main-product.liquid; a no-op elsewhere.
+  var galleryImage = document.getElementById("product-gallery-image");
+  var galleryThumbs = document.getElementById("product-gallery-thumbs");
+
+  if (galleryImage && galleryThumbs) {
+    galleryThumbs.querySelectorAll(".product-gallery-thumb").forEach(function (thumb) {
+      thumb.addEventListener("click", function () {
+        var fullSrc = thumb.getAttribute("data-full-src");
+        var alt = thumb.getAttribute("data-alt");
+        if (fullSrc) galleryImage.setAttribute("src", fullSrc);
+        if (alt) galleryImage.setAttribute("alt", alt);
+
+        galleryThumbs.querySelectorAll(".product-gallery-thumb").forEach(function (t) {
+          t.classList.remove("border-brand-olive");
+          t.classList.add("border-transparent");
+        });
+        thumb.classList.remove("border-transparent");
+        thumb.classList.add("border-brand-olive");
+      });
+    });
+  }
+
   // -- Scroll reveal -----------------------------------------------------
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
