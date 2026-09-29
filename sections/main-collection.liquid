@@ -1,63 +1,151 @@
-<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
+<div class="font-sans antialiased text-brand-textDark bg-brand-bg">
 
-  <section class="w-full relative pt-32 pb-16 px-6 md:px-12 flex flex-col items-center justify-center text-center">
-    <p class="uppercase tracking-[0.3em] text-xs font-semibold text-brand-textLight mb-4">The Collection</p>
-    <h1 class="text-5xl md:text-7xl font-serif text-brand-textDark leading-[0.95] tracking-tight mb-6">
-      {{ collection.title | default: "Pure Origins." }}
-    </h1>
-    {% if collection.description != blank %}
-      <div class="text-brand-textLight max-w-xl mx-auto text-lg font-light leading-relaxed">{{ collection.description }}</div>
-    {% else %}
-      <p class="text-brand-textLight max-w-xl mx-auto text-lg font-light leading-relaxed">
-        Eight oils, one honest process. Every bottle shows its true colour instead of a studio render.
-      </p>
-    {% endif %}
-  </section>
+  {% if collection.products.size > 0 %}
+    <!-- View toggle: "Experience" (horizontal scroll showcase) vs "Grid View" -->
+    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 bg-white/80 backdrop-blur-md rounded-full shadow-lg p-1.5 border border-brand-border flex items-center" id="product-view-toggle">
+      <button type="button" onclick="setProductView('scroll')" id="btn-view-scroll" class="px-5 py-2.5 rounded-full text-xs font-bold tracking-wider transition-colors bg-brand-olive text-white uppercase">Experience</button>
+      <button type="button" onclick="setProductView('grid')" id="btn-view-grid" class="px-5 py-2.5 rounded-full text-xs font-bold tracking-wider transition-colors text-brand-textLight hover:text-brand-textDark uppercase">Grid View</button>
+    </div>
 
-  <div class="max-w-7xl mx-auto px-6 md:px-12 pb-24">
-    {% if collection.products.size > 0 %}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {% for product in collection.products %}
-          <a href="{{ product.url }}" class="bg-brand-card rounded-3xl p-8 flex flex-col items-center hover:shadow-xl transition-all duration-500 group border border-transparent hover:border-brand-olive/30 relative overflow-hidden">
+    <!-- Nav dots for the horizontal scroll experience -->
+    <div class="fixed right-6 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-3" id="st-nav-dots">
+      <button type="button" class="w-2 h-2 rounded-full bg-brand-textLight/30 st-nav-dot active" data-target="0" aria-label="Introduction"></button>
+      {% for product in collection.products %}
+        <button type="button" class="w-2 h-2 rounded-full bg-brand-textLight/30 st-nav-dot" data-target="{{ forloop.index }}" aria-label="{{ product.title }}"></button>
+      {% endfor %}
+    </div>
 
-            <div class="h-64 w-full flex items-center justify-center mb-8 relative z-10 transform group-hover:scale-105 transition-transform duration-500">
-              {% if product.featured_image %}
-                <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.featured_image.alt | default: product.title }}" loading="lazy" width="500" height="500" class="max-h-full w-auto object-contain drop-shadow-lg">
-              {% endif %}
-            </div>
+    <!-- "Experience" view: one full-screen horizontal-scroll panel per product -->
+    <div class="st-scroll-container hide-scrollbar" id="st-scroll-container">
 
-            <div class="w-full text-center relative z-10">
-              {% if product.tags.size > 0 %}
-                <span class="text-[0.65rem] font-bold tracking-widest text-brand-olive uppercase bg-white/60 px-3 py-1 rounded-full mb-4 inline-block">{{ product.tags.first }}</span>
-              {% endif %}
-              <h3 class="font-serif text-3xl text-brand-textDark mb-2">{{ product.title }}</h3>
-              {% if product.type != blank %}
-                <p class="text-brand-textLight text-sm mb-6">{{ product.type }}</p>
-              {% endif %}
-              <div class="flex items-center justify-between w-full border-t border-brand-border/50 pt-6">
-                <span class="text-xl font-medium text-brand-textDark">
-                  {%- if product.compare_at_price > product.price -%}
-                    <s class="text-brand-textLight font-normal text-sm mr-2">{{ product.compare_at_price | money }}</s>
-                  {%- endif -%}
+      <div class="st-scroll-section bg-brand-bg is-visible" id="section-0">
+        <div class="max-w-7xl mx-auto w-full px-6 md:px-12 flex flex-col justify-center items-center text-center">
+          <div class="st-reveal-text mb-4">
+            <span class="uppercase tracking-[0.3em] text-xs font-semibold text-brand-textLight">The Collection</span>
+          </div>
+          <div class="st-reveal-text">
+            <h1 class="text-6xl md:text-8xl lg:text-[120px] font-serif text-brand-textDark leading-[0.9] tracking-tighter">
+              {{ collection.title | default: "Pure Origins." }}
+            </h1>
+          </div>
+          <p class="st-fade-in mt-12 text-brand-textLight max-w-md mx-auto text-lg md:text-xl font-light">
+            {% if collection.description != blank %}
+              {{ collection.description | strip_html }}
+            {% else %}
+              Scroll to explore our range of cold-pressed oils, extracted slowly to ensure every drop retains its vital nutrients.
+            {% endif %}
+          </p>
+          <div class="st-fade-in mt-16 animate-bounce">
+            <i class="fa-solid fa-arrow-right-long text-brand-olive text-2xl"></i>
+          </div>
+        </div>
+      </div>
+
+      {% assign panel_colors = "#e8e3d5,#dfd9cd,#f0ede6" | split: "," %}
+      {% for product in collection.products %}
+        {% assign panel_color = panel_colors[forloop.index0 | modulo: 3] %}
+        <div class="st-scroll-section" id="section-{{ forloop.index }}" style="background-color: {{ panel_color }};">
+          <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none"></div>
+          <div class="max-w-7xl mx-auto w-full px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+
+            <div class="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
+              <div class="st-reveal-text mb-2">
+                <span class="font-serif text-6xl md:text-7xl lg:text-8xl text-brand-textDark leading-none">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              </div>
+              <div class="w-12 h-px bg-brand-olive my-6 st-fade-in"></div>
+              <div class="st-reveal-text mb-4">
+                <h2 class="font-serif text-4xl md:text-6xl text-brand-textDark leading-none">{{ product.title }}</h2>
+              </div>
+              <p class="st-fade-in text-brand-textLight text-lg mb-8 max-w-sm">
+                {{ product.description | strip_html | truncate: 140 }}
+              </p>
+              <div class="st-fade-in flex items-center gap-6 flex-wrap">
+                <span class="text-2xl font-medium text-brand-textDark">
                   {{ product.price | money }}
+                  {% unless product.has_only_default_variant %}
+                    <span class="text-sm font-normal text-brand-textLight">/ {{ product.selected_or_first_available_variant.title }}</span>
+                  {% endunless %}
                 </span>
-                <span class="text-sm font-bold text-brand-textDark flex items-center gap-2 group-hover:text-brand-olive transition-colors">
-                  View Details <i class="fa-solid fa-arrow-right"></i>
-                </span>
+                <a href="{{ product.url }}" class="bg-brand-textDark hover:bg-brand-olive text-white px-8 py-3 rounded-full text-sm font-medium transition duration-300">
+                  Discover <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </a>
               </div>
             </div>
+
+            <div class="lg:col-span-7 h-[55vh] lg:h-[75vh] flex items-center justify-center order-1 lg:order-2">
+              <div class="st-image-wrapper relative w-full h-full max-w-[500px] flex items-center justify-center">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-olive/10 rounded-full blur-3xl"></div>
+                {% if product.featured_image %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 700 }}"
+                    alt="{{ product.featured_image.alt | default: product.title }}"
+                    loading="lazy"
+                    width="500"
+                    height="700"
+                    class="max-h-full w-auto object-contain drop-shadow-2xl relative z-10"
+                  >
+                {% endif %}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Grid view: every product at a glance -->
+  <div id="products-grid-view" class="w-full min-h-screen bg-brand-bg pt-32 pb-24 px-6 md:px-12"{% if collection.products.size > 0 %} style="display: none;"{% endif %}>
+    <div class="max-w-7xl mx-auto">
+      {% if collection.products.size > 0 %}
+        <div class="text-center mb-16">
+          <h2 class="font-serif text-5xl md:text-6xl text-brand-textDark leading-tight mb-4">The Complete Collection</h2>
+          <p class="text-brand-textLight text-lg max-w-2xl mx-auto">Skip the scroll and view all our pure, traditionally crafted oils at a glance.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for product in collection.products %}
+            <a href="{{ product.url }}" class="bg-brand-card rounded-3xl p-8 flex flex-col items-center hover:shadow-xl transition-all duration-500 group border border-transparent hover:border-brand-olive/30 relative overflow-hidden">
+
+              <div class="h-64 w-full flex items-center justify-center mb-8 relative z-10 transform group-hover:scale-105 transition-transform duration-500">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.featured_image.alt | default: product.title }}" loading="lazy" width="500" height="500" class="max-h-full w-auto object-contain drop-shadow-lg">
+                {% endif %}
+              </div>
+
+              <div class="w-full text-center relative z-10">
+                {% if product.tags.size > 0 %}
+                  <span class="text-[0.65rem] font-bold tracking-widest text-brand-olive uppercase bg-white/60 px-3 py-1 rounded-full mb-4 inline-block">{{ product.tags.first }}</span>
+                {% endif %}
+                <h3 class="font-serif text-3xl text-brand-textDark mb-2">{{ product.title }}</h3>
+                {% if product.type != blank %}
+                  <p class="text-brand-textLight text-sm mb-6">{{ product.type }}</p>
+                {% endif %}
+                <div class="flex items-center justify-between w-full border-t border-brand-border/50 pt-6">
+                  <span class="text-xl font-medium text-brand-textDark">
+                    {%- if product.compare_at_price > product.price -%}
+                      <s class="text-brand-textLight font-normal text-sm mr-2">{{ product.compare_at_price | money }}</s>
+                    {%- endif -%}
+                    {{ product.price | money }}
+                  </span>
+                  <span class="text-sm font-bold text-brand-textDark flex items-center gap-2 group-hover:text-brand-olive transition-colors">
+                    View Details <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="text-center pt-8 pb-24 px-6 border border-dashed border-brand-border rounded-2xl">
+          <p class="font-serif text-3xl text-brand-textDark mb-4">Products coming soon.</p>
+          <p class="text-brand-textLight max-w-md mx-auto mb-8">We're setting up the catalogue here. Check back shortly, or explore the full range on the homepage.</p>
+          <a href="{{ routes.root_url }}" class="bg-brand-olive hover:bg-brand-oliveHover text-white px-8 py-3.5 rounded-full inline-flex items-center gap-3 font-medium transition duration-300">
+            View the range <i class="fa-solid fa-chevron-right text-xs"></i>
           </a>
-        {% endfor %}
-      </div>
-    {% else %}
-      <div class="text-center py-24 px-6 border border-dashed border-brand-border rounded-2xl">
-        <p class="font-serif text-3xl text-brand-textDark mb-4">Products coming soon.</p>
-        <p class="text-brand-textLight max-w-md mx-auto mb-8">We're setting up the catalogue here. Check back shortly, or explore the full range on the homepage.</p>
-        <a href="{{ routes.root_url }}" class="bg-brand-olive hover:bg-brand-oliveHover text-white px-8 py-3.5 rounded-full inline-flex items-center gap-3 font-medium transition duration-300">
-          View the range <i class="fa-solid fa-chevron-right text-xs"></i>
-        </a>
-      </div>
-    {% endif %}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 
