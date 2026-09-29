@@ -43,7 +43,8 @@
 
       {% assign panel_colors = "#e8e3d5,#dfd9cd,#f0ede6" | split: "," %}
       {% for product in collection.products %}
-        {% assign panel_color = panel_colors[forloop.index0 | modulo: 3] %}
+        {% assign panel_bg_index = forloop.index0 | modulo: 3 %}
+        {% assign panel_color = panel_colors[panel_bg_index] %}
         <div class="st-scroll-section" id="section-{{ forloop.index }}" style="background-color: {{ panel_color }};">
           <div class="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none"></div>
           <div class="max-w-7xl mx-auto w-full px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
