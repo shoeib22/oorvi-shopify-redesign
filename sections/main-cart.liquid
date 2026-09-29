@@ -27,7 +27,7 @@
                 </div>
                 <div class="flex items-center border border-brand-border rounded-full p-1 bg-white shrink-0">
                   <button type="button" aria-label="Decrease quantity" onclick="this.nextElementSibling.stepDown();this.nextElementSibling.form.requestSubmit()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&minus;</button>
-                  <input type="number" name="updates[{{ forloop.index0 }}]" value="{{ item.quantity }}" min="0" aria-label="Quantity" class="w-9 text-center bg-transparent focus:outline-none">
+                  <input type="number" name="updates[{{ forloop.index }}]" value="{{ item.quantity }}" min="0" aria-label="Quantity" class="w-9 text-center bg-transparent focus:outline-none">
                   <button type="button" aria-label="Increase quantity" onclick="this.previousElementSibling.stepUp();this.previousElementSibling.form.requestSubmit()" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-bg transition">&plus;</button>
                 </div>
                 <div class="font-medium text-brand-textDark w-20 text-right shrink-0">{{ item.final_line_price | money }}</div>
