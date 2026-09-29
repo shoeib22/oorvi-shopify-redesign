@@ -97,51 +97,28 @@
       </a>
     </div>
 
-    <!-- Product Cards Grid -->
+    <!-- Product Cards Grid — pulled live from the store's product catalogue,
+         not hardcoded, so new/changed/reordered products show up here
+         automatically with their real photo, title, and blurb. -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Product Card 1 -->
-      <a href="{{ all_products['groundnut-oil-cold-pressed'].url | default: '/products/groundnut-oil-cold-pressed' }}" class="bg-brand-card rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition duration-300 group cursor-pointer border border-transparent hover:border-brand-olive/20">
-        <div class="w-24 h-40 bg-[#f4f1ea] rounded-lg shadow-inner flex items-center justify-center p-2 relative overflow-hidden">
-          <img src="{{ 'groundnut-cp.png' | asset_url }}" alt="Groundnut Oil, Cold Pressed" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <div class="flex-1">
-          <h3 class="font-serif text-xl font-medium text-brand-textDark mb-2">Groundnut Oil</h3>
-          <p class="text-sm text-brand-textLight mb-4 font-light">Cold pressed for<br>pure nutrition.</p>
-          <span class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 group-hover:text-brand-olive group-hover:border-brand-olive transition inline-flex items-center gap-2">
-            Shop Now <i class="fa-solid fa-arrow-right text-xs"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- Product Card 2 -->
-      <a href="{{ all_products['white-sesame-oil-cold-pressed'].url | default: '/products/white-sesame-oil-cold-pressed' }}" class="bg-brand-card rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition duration-300 group cursor-pointer border border-transparent hover:border-brand-olive/20">
-        <div class="w-24 h-40 bg-[#f4f1ea] rounded-lg shadow-inner flex items-center justify-center p-2 relative overflow-hidden">
-          <img src="{{ 'white-sesame-cp.png' | asset_url }}" alt="Sesame Oil, Cold Pressed" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <div class="flex-1">
-          <h3 class="font-serif text-xl font-medium text-brand-textDark mb-2">Sesame Oil</h3>
-          <p class="text-sm text-brand-textLight mb-4 font-light">Traditionally extracted<br>for rich flavour.</p>
-          <span class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 group-hover:text-brand-olive group-hover:border-brand-olive transition inline-flex items-center gap-2">
-            Shop Now <i class="fa-solid fa-arrow-right text-xs"></i>
-          </span>
-        </div>
-      </a>
-
-      <!-- Product Card 3 -->
-      <a href="{{ all_products['coconut-oil-wood-pressed'].url | default: '/products/coconut-oil-wood-pressed' }}" class="bg-brand-card rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition duration-300 group cursor-pointer border border-transparent hover:border-brand-olive/20">
-        <div class="w-24 h-40 bg-[#f4f1ea] rounded-lg shadow-inner flex items-center justify-center p-2 relative overflow-hidden">
-          <img src="{{ 'coconut-wp.png' | asset_url }}" alt="Coconut Oil, Wood Pressed" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <div class="flex-1">
-          <h3 class="font-serif text-xl font-medium text-brand-textDark mb-2">Coconut Oil</h3>
-          <p class="text-sm text-brand-textLight mb-4 font-light">Pure, natural and<br>perfect for everyday.</p>
-          <span class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 group-hover:text-brand-olive group-hover:border-brand-olive transition inline-flex items-center gap-2">
-            Shop Now <i class="fa-solid fa-arrow-right text-xs"></i>
-          </span>
-        </div>
-      </a>
-
+      {% for product in collections.all.products limit: 3 %}
+        <a href="{{ product.url }}" class="bg-brand-card rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition duration-300 group cursor-pointer border border-transparent hover:border-brand-olive/20">
+          <div class="w-24 h-40 bg-[#f4f1ea] rounded-lg shadow-inner flex items-center justify-center p-2 relative overflow-hidden">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 200 }}" alt="{{ product.featured_image.alt | default: product.title }}" width="200" height="320" class="w-full h-full object-contain" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="flex-1">
+            <h3 class="font-serif text-xl font-medium text-brand-textDark mb-2">{{ product.title }}</h3>
+            {% if product.description != blank %}
+              <p class="text-sm text-brand-textLight mb-4 font-light">{{ product.description | strip_html | truncate: 60 }}</p>
+            {% endif %}
+            <span class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 group-hover:text-brand-olive group-hover:border-brand-olive transition inline-flex items-center gap-2">
+              Shop Now <i class="fa-solid fa-arrow-right text-xs"></i>
+            </span>
+          </div>
+        </a>
+      {% endfor %}
     </div>
   </section>
 
