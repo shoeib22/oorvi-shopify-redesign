@@ -8,3 +8,5 @@ The existing Shopify bot commits confirm that the repository's main branch is co
 This revision maps the eight existing catalogue handles, preserves cart updates by line-item key, includes the original Oorvi logos and revised groundnut/coconut hero, serves fonts/CSS/images as theme assets, and adds product search with predictive suggestions and graceful fallback.
 
 Local checks: Liquid/schema/template/asset validation, Shopify Theme Check, responsive UI and interaction checks, and search behavior checks. Live-theme verification and publishing require Shopify authentication. Final deployment results will be recorded here after verification.
+
+GitHub deployment: redesign and search changes pushed to `main` at `0594a0b`, preserving Shopify history. All responsive/interaction/search checks passed; Shopify Theme Check inspected 47 files with zero offenses. Public-store verification still found Copy of Dawn active. Shopify sign-in is pending, so the connected theme has not yet been verified or published.
