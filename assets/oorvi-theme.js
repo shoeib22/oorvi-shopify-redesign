@@ -112,6 +112,7 @@
         url.searchParams.set('q', query); url.searchParams.set('section_id', 'predictive-search');
         url.searchParams.set('resources[type]', 'product'); url.searchParams.set('resources[limit]', '6');
         url.searchParams.set('resources[options][unavailable_products]', 'show');
+        url.searchParams.set('resources[options][fields]', 'title');
         try {
           const response = await fetch(url, {signal: controller.signal, credentials: 'same-origin'});
           if (!response.ok) throw new Error('Search unavailable');
