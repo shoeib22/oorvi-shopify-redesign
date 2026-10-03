@@ -1,118 +1,79 @@
-# Oorvi — Multipage Redesign (Shopify Theme)
+# Oorvi — Goodness. Naturally.
 
-A Shopify Online Store 2.0 theme for [oorvi.store](https://oorvi.store) — a
-warm, earthy cream-and-olive design ("Goodness. Naturally.") with real
-product photography. A real multipage site: Home, Shop, Product, Our Story,
-Contact, Cart, and customer accounts (login/register/order history/
-addresses) all exist as separate pages with shared navigation.
+A complete Shopify Online Store 2.0 redesign for Oorvi, with a new homepage structure, a modern Indian pantry identity, and three premium generated campaign images.
 
-## Pages
+The repository stays on Liquid, vanilla JavaScript, and Tailwind 3 utilities. The utility stylesheet is now compiled and included in the theme. Fonts and icons are local assets, so the storefront does not require the old Tailwind, Google Fonts, or Font Awesome CDNs.
 
-| Page | Route | Template |
+## Review locally
+
+```powershell
+cd C:\Users\Shoeii\Documents\oorvi-shopify-theme
+npm install
+npm run preview:build
+npm run preview
+```
+
+Open **http://localhost:4173**. The preview renders the actual theme Liquid with sample products from `products-import.csv`. It does not connect to Shopify or send email. Forms validate locally and display a preview message instead of submitting. The live theme uses Shopify's real forms.
+
+Useful preview states:
+
+- `/preview/cart-filled`
+- `/preview/product-variants`
+- `/preview/product-sold-out`
+- `/preview/collection-empty`
+- `/preview/search-results`
+- `/preview/password-reset`
+
+## Pages and behavior
+
+| Page | Route | Section |
 | --- | --- | --- |
-| Home | `/` | `templates/index.json` → `sections/oorvi-homepage.liquid` |
-| Shop | `/collections/all` | `templates/collection.json` → `sections/main-collection.liquid` |
-| Product | `/products/<handle>` | `templates/product.json` → `sections/main-product.liquid` |
-| Our Story | `/pages/our-story` | `templates/page.our-story.json` → `sections/page-our-story.liquid` |
-| Contact | `/pages/contact` | `templates/page.contact.json` → `sections/page-contact.liquid` |
-| Cart | `/cart` | `templates/cart.json` → `sections/main-cart.liquid` |
-| Login | `/account/login` | `templates/customers/login.json` → `sections/customers-login.liquid` |
-| Register | `/account/register` | `templates/customers/register.json` → `sections/customers-register.liquid` |
-| Reset password | `/account/reset/...` (from emailed link) | `templates/customers/reset_password.json` → `sections/customers-reset-password.liquid` |
-| Account | `/account` | `templates/customers/account.json` → `sections/customers-account.liquid` |
-| Order detail | `/account/orders/<id>` | `templates/customers/order.json` → `sections/customers-order.liquid` |
-| Addresses | `/account/addresses` | `templates/customers/addresses.json` → `sections/customers-addresses.liquid` |
+| Home | `/` | `oorvi-homepage.liquid` |
+| All oils | `/collections/all` | `main-collection.liquid` |
+| Product | `/products/<handle>` | `main-product.liquid` |
+| The Oorvi way | `/pages/our-story` | `page-our-story.liquid` |
+| Contact | `/pages/contact` | `page-contact.liquid` |
+| Shopping bag | `/cart` | `main-cart.liquid` |
+| Search | `/search` | `main-search.liquid` |
+| Missing page | invalid route | `main-404.liquid` |
+| Account | `/account` and customer routes | `customers-*.liquid` |
 
-Header (topline + nav + mobile menu, with a login/account icon) and footer
-(newsletter signup + links + social) are shared across every page via
-`snippets/header.liquid` and `snippets/footer.liquid`, rendered from
-`layout/theme.liquid`.
+The homepage provides cold/wood pressed filters and a cooking-based oil finder. Featured oil prices come from `all_products` when the products are present. Product pages include variants with price and availability updates, quantity controls, image galleries, and related oils. Collection sorting and pagination use Shopify data. Cart updates and checkout submit to Shopify. The header has a keyboard-accessible mobile menu with focus trapping and Escape support.
 
-**Shop, Product, Cart, and the customer account pages are all wired to real
-Shopify data and forms** — `collection.products`, `product.variants`, real
-add-to-cart, real cart line-item updates, real `customer_login` /
-`create_customer` / `reset_customer_password` / `customer_address` forms.
-None of it is mocked. It needs real data behind it to show anything (see
-checklist below). **Home stays hand-authored** with the eight real Oorvi
-oils hardcoded for the marketing-page teaser, since there's no live
-catalogue to pull from yet.
+## Validation
 
-## What I can't do for you
+```powershell
+npm run check
+npm run verify:ui
+npm run verify:search
+npx --yes @shopify/cli theme check --path .
+```
 
-I don't have — and won't ask for — your Shopify admin login or an API
-token, so connecting this theme to your actual store, enabling customer
-accounts, creating pages, and importing products all have to happen in your
-Shopify admin, by you. Everything below is written as exact steps for that.
+The UI check requires the local preview server and Microsoft Edge. To use another installed Playwright browser channel, set `OORVI_BROWSER` (for example `chrome`). It checks 320, 390, 768, and 1440 pixel layouts; filtering; finder results; mobile navigation; sorting; variant pricing and sold-out state; galleries; quantities; and contact validation. It also saves review screenshots into `output/`.
 
-## Go-live checklist
+`npm run check` validates Liquid syntax adapted for the local renderer, section schemas, static assets, and JSON/template references. Shopify Theme Check validates the actual theme files. Store authentication, order submission, email delivery, and checkout require a connected Shopify store and were not tested against a live account.
 
-1. **Connect the theme**
-   - Shopify admin → **Online Store → Themes → Add theme → Connect from
-     GitHub**
-   - Authorize Shopify's GitHub app if prompted, select this repository and
-     the `main` branch
-   - Shopify creates an **unpublished** theme wired to this repo — click
-     **Preview** before doing anything else
+## Theme upload
 
-2. **Enable customer accounts** (for Login/Register/Account/Cart account
-   link to work)
-   - Shopify admin → **Settings → Customer accounts**
-   - Choose **Classic customer accounts** — this theme's login/register/
-     account/order/address pages are classic-account templates. ("New
-     customer accounts" is a Shopify-hosted flow off-theme; it won't use
-     these pages.)
-   - Set to **Accounts optional** or **Accounts required**, whichever you
-     want at checkout
+The generated `output/oorvi-premium-theme.zip` contains only the Shopify theme directories: `assets`, `config`, `layout`, `locales`, `sections`, `snippets`, and `templates`.
 
-3. **Create the Our Story and Contact pages** (Shopify pages are admin
-   content, not theme files, so these routes 404 until you do this)
-   - **Online Store → Pages → Add page**
-   - Set the page **handle** to `our-story`, under **Theme template** choose
-     `page.our-story` — save
-   - Repeat with handle `contact` and template `page.contact`
-   - The page body content you type in admin is ignored; each page's own
-     section carries its copy
+Upload it as an unpublished theme in Shopify, or connect this repository through Shopify's GitHub integration. Before publishing:
 
-4. **Import the product catalogue** so Shop/Product/Cart have something to
-   sell
-   - **Products → Import**, upload `products-import.csv` from the repo root
-   - It has all 8 real Oorvi oils — title, price, description, size —
-     with images pulled directly from this repo's `assets/` folder (public
-     GitHub raw URLs), so no manual image upload needed
-   - Review/adjust inventory quantities after import (it defaults to 100
-     per variant)
+1. The eight product handles are matched to the existing `oorvi.store` catalogue. `products-import.csv` uses these same handles.
+2. Create the `our-story` and `contact` pages and assign their respective templates.
+3. Enable classic customer accounts to use the theme's customer templates.
+4. Configure the store's privacy, terms, returns, and shipping policies; the footer links to Shopify policy routes.
+5. Review inventory, pricing, shipping, payments, and the theme preview in Shopify.
 
-5. **Publish** from the theme's `···` menu once you're happy with the
-   preview
+The theme is deployed through the Shopify integration connected to this repository?s `main` branch. GitHub synchronization updates the connected theme; publishing that theme is a separate Shopify action. See `DEPLOYMENT.md` for the current deployment status.
 
-Any future `git push` to `main` syncs automatically to the connected theme.
+## Maintaining the design
 
-## How this was built
+- Shared tokens and page styling: `assets/oorvi-theme.css`.
+- Interactions: `assets/oorvi-theme.js`.
+- Shared components: `snippets/header.liquid`, `footer.liquid`, `icon.liquid`, and `oil-card.liquid`.
+- Regenerate existing Tailwind 3 utility classes after changing utility markup: `npm run css:build`.
+- Font source and licenses: `scripts/vendor-fonts.py`, `assets/oorvi-fonts.css`, and the `OFL-*.txt` files.
+- Concept and image provenance: `DESIGN.md`.
 
-Hand-written Liquid with Tailwind utility classes (loaded via the Tailwind
-CDN build, configured with Oorvi's `brand-*` color/font tokens in
-`layout/theme.liquid`) and a small amount of vanilla JS — no build step.
-`assets/oorvi-theme.css` only carries the handful of cross-page mechanics
-Tailwind utilities can't express on their own (the mobile menu's off-canvas
-transform, a hide-scrollbar utility, accessibility helpers); every page's
-actual visual design lives inline as Tailwind classes. `assets/oorvi-theme.js`
-handles the mobile menu toggle and an opt-in scroll-reveal effect. All
-`.png`/`.jpg` files are the real Oorvi product photography and logo, pulled
-from the brand's own asset kit.
-
-An earlier version of this homepage used a Three.js scroll-scrubbed 3D
-flythrough (built from a separate Vite + TypeScript source project), then a
-gold/ink editorial direction. Both were dropped in favor of this warmer
-cream-and-olive design, first as a redesigned homepage, then expanded across
-the full multipage site — Shop, Product, Our Story, Contact, Cart, and
-customer accounts all now share the same design system.
-
-### Known simplifications
-
-- The address form uses a plain text input for State/Province rather than a
-  country-dependent dropdown — still fully functional, just less guided
-- Cart quantity +/- submits the form on each click (a full page reload)
-  rather than updating via AJAX — simpler and fully working, just not
-  instant
-- Address editing/deletion isn't built out yet — customers can view saved
-  addresses and add new ones from `/account/addresses`
+The storefront itself requires no Node process or build tool on Shopify. Node tools are only for local preview, verification, and optional CSS regeneration.

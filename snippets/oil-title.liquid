@@ -1,0 +1,11 @@
+{%- case oil.handle -%}
+{%- when 'cold-pressed-groundnut-oil', 'groundnut-oil-cold-pressed' -%}Groundnut oil — Cold pressed
+{%- when 'oorvi-cold-pressed-white-sesame-oil-500ml', 'white-sesame-oil-cold-pressed' -%}White sesame oil — Cold pressed
+{%- when 'wood-pressed-coconut-oil', 'coconut-oil-wood-pressed' -%}Coconut oil — Wood pressed
+{%- when 'cold-pressed-mustard', 'mustard-oil-cold-pressed' -%}Mustard oil — Cold pressed
+{%- when 'cold-presses-sunflower-oil', 'sunflower-oil-cold-pressed' -%}Sunflower oil — Cold pressed
+{%- when 'cold-pressed-safflower-oil-1-l', 'safflower-oil-cold-pressed' -%}Safflower oil — Cold pressed
+{%- when 'cold-pressed-black-sesame-oil-500ml', 'black-sesame-oil-cold-pressed' -%}Black sesame oil — Cold pressed
+{%- when 'wood-pressed-groundnut-oil', 'groundnut-oil-wood-pressed' -%}Groundnut oil — Wood pressed
+{%- else -%}{{ oil.title | escape }}
+{%- endcase -%}

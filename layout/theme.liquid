@@ -3,48 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page_title | default: shop.name }}</title>
-  <meta name="description" content="Single-pressed, unfiltered cold & wood pressed oils from Hyderabad. A1 native seed, one honest process.">
+  <title>{{ page_title | default: shop.name }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
+  <meta name="description" content="{{ page_description | default: 'Real seeds. Slowly pressed. Nothing extra. Discover Oorvi cold and wood pressed oils, made with care in Hyderabad for your everyday cooking.' | escape }}">
   <link rel="canonical" href="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | default: shop.name | escape }}">
+  <meta property="og:description" content="{{ page_description | default: 'A little tradition. A lot of goodness. Cold and wood pressed oils from Oorvi.' | escape }}">
+  <meta property="og:image" content="https:{{ 'oorvi-hero-v4.webp' | asset_url }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#244a35">
+  <link rel="icon" type="image/svg+xml" href="{{ 'oorvi-original-mark.svg' | asset_url }}">
   {{ content_for_header }}
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {{ 'oorvi-fonts.css' | asset_url | stylesheet_tag }}
+  {{ 'oorvi-utilities.css' | asset_url | stylesheet_tag }}
   {{ 'oorvi-theme.css' | asset_url | stylesheet_tag }}
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Alex+Brush&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              bg: '#f4f1ea',
-              card: '#e8e3d5',
-              olive: '#4a5d23',
-              oliveHover: '#3b4a1c',
-              textDark: '#2a2d24',
-              textLight: '#595c52',
-              border: '#d3cfc4',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-            cursive: ['Alex Brush', 'cursive'],
-          }
-        }
-      }
-    }
-  </script>
 </head>
 <body class="template-{{ template.name }}">
   {% render 'header' %}
-  <main>
-    {{ content_for_layout }}
-  </main>
+  <main id="main-content" tabindex="-1">{{ content_for_layout }}</main>
   {% render 'footer' %}
   <script src="{{ 'oorvi-theme.js' | asset_url }}" defer></script>
 </body>

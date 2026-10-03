@@ -1,0 +1,11 @@
+{%- case oil.handle -%}
+{%- when 'cold-pressed-groundnut-oil', 'groundnut-oil-cold-pressed' -%}{{ 'groundnut-cp.png' | asset_url }}
+{%- when 'oorvi-cold-pressed-white-sesame-oil-500ml', 'white-sesame-oil-cold-pressed' -%}{{ 'white-sesame-cp.png' | asset_url }}
+{%- when 'wood-pressed-coconut-oil', 'coconut-oil-wood-pressed' -%}{{ 'coconut-wp.png' | asset_url }}
+{%- when 'cold-pressed-mustard', 'mustard-oil-cold-pressed' -%}{{ 'mustard-cp.png' | asset_url }}
+{%- when 'cold-presses-sunflower-oil', 'sunflower-oil-cold-pressed' -%}{{ 'sunflower-cp.png' | asset_url }}
+{%- when 'cold-pressed-safflower-oil-1-l', 'safflower-oil-cold-pressed' -%}{{ 'safflower-cp.png' | asset_url }}
+{%- when 'cold-pressed-black-sesame-oil-500ml', 'black-sesame-oil-cold-pressed' -%}{{ 'black-sesame-cp.png' | asset_url }}
+{%- when 'wood-pressed-groundnut-oil', 'groundnut-oil-wood-pressed' -%}{{ 'groundnut-wp.png' | asset_url }}
+{%- else -%}{{ oil.featured_image | image_url: width: 1000 }}
+{%- endcase -%}

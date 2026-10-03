@@ -1,5 +1,5 @@
-<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
-  <section class="w-full pt-28 pb-12 px-6 text-center">
+<div class="account-dashboard font-sans antialiased text-brand-textDark bg-brand-bg">
+  <section class="page-intro wrap">
     <p class="uppercase tracking-[0.3em] text-xs font-semibold text-brand-textLight mb-4">Order {{ order.name }}</p>
     <h1 class="text-4xl md:text-6xl font-serif text-brand-textDark">{{ order.created_at | date: "%d %B %Y" }}</h1>
   </section>
@@ -34,7 +34,7 @@
           <p class="text-sm text-brand-textDark">{{ order.shipping_address.address1 }}, {{ order.shipping_address.city }} {{ order.shipping_address.zip }}</p>
         </div>
       {% endif %}
-      <a href="{{ routes.account_url }}" class="block text-center w-full border border-brand-border text-brand-textDark py-3.5 rounded-full uppercase tracking-widest text-xs font-bold hover:border-brand-olive hover:text-brand-olive transition">Back to Account</a>
+      <a href="{{ routes.account_url }}" class="block text-center w-full border border-brand-border text-brand-textDark py-3.5 rounded-full uppercase tracking-widest text-xs font-bold hover:border-brand-olive hover:text-brand-olive transition">Back to account</a>
     </div>
   </div>
 </div>

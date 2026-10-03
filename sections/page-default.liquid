@@ -1,16 +1,11 @@
-<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
-  <section class="w-full pt-28 pb-16 px-6 text-center">
-    <h1 class="text-4xl md:text-6xl font-serif text-brand-textDark">{{ page.title }}</h1>
-  </section>
-
-  <div class="max-w-3xl mx-auto px-6 pb-24 text-brand-textLight leading-relaxed text-lg">
-    {{ page.content }}
-  </div>
-</div>
-
+{% if page.handle == 'our-story' %}
+{% render 'story-content' %}
+{% elsif page.handle == 'contact' %}
+{% render 'contact-content' %}
+{% else %}
+<section class="page-intro wrap"><div><p class="eyebrow">Oorvi ? Goodness. Naturally.</p><h1>{{ page.title | escape }}</h1></div></section>
+<div class="page-content wrap">{{ page.content }}</div>
+{% endif %}
 {% schema %}
-{
-  "name": "Page",
-  "settings": []
-}
+{"name":"Page","settings":[]}
 {% endschema %}

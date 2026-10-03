@@ -3,195 +3,173 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>OORVI — Landing Page Preview</title>
+  <title>Oorvi — Goodness. Naturally.</title>
+  <meta name="description" content="Real seeds. Slowly pressed. Nothing extra. Discover Oorvi cold and wood pressed oils, made with care in Hyderabad for your everyday cooking.">
+  <link rel="canonical" href="http://localhost:4173/">
+  <meta property="og:title" content="Oorvi — Goodness. Naturally.">
+  <meta property="og:description" content="A little tradition. A lot of goodness. Cold and wood pressed oils from Oorvi.">
+  <meta property="og:image" content="https:/assets/oorvi-hero-v4.webp">
+  <meta property="og:url" content="http://localhost:4173/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#244a35">
+  <link rel="icon" type="image/svg+xml" href="/assets/oorvi-original-mark.svg">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/oorvi-fonts.css">
+  <link rel="stylesheet" href="/assets/oorvi-utilities.css">
   <link rel="stylesheet" href="/assets/oorvi-theme.css">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Alex+Brush&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              bg: '#f4f1ea', card: '#e8e3d5', olive: '#4a5d23', oliveHover: '#3b4a1c',
-              textDark: '#2a2d24', textLight: '#595c52', border: '#d3cfc4',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-            cursive: ['Alex Brush', 'cursive'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { background-color: #f4f1ea; }
-    .preview-banner { background:#2a2d24; color:#fff; font:12px/1.4 sans-serif; padding:8px 16px; text-align:center; letter-spacing:.05em; }
-  </style>
 </head>
-<body>
-  <div class="preview-banner">LOCAL STATIC PREVIEW — not the live Shopify store; cart/account/search links are non-functional here.</div>
+<body class="template-index">
+  <a href="#main-content" class="skip-link">Skip to content</a>
+<div class="announcement"><span>Good seeds. Honest pressing. Everyday goodness.</span><a href="/collections/all">Meet your kitchen essentials <span aria-hidden="true">↗</span></a></div>
+<header class="site-header" id="nav">
+  <a href="/" class="brand" aria-label="Oorvi home"><img src="/assets/oorvi-original-primary.svg" alt="Oorvi ? Premium Natural Products" width="150" height="90"></a>
+  <nav class="desktop-nav" aria-label="Main navigation">
+    <a href="/collections/all" >Shop oils</a>
+    <a href="/pages/our-story" >The Oorvi way</a>
+    <a href="/#oil-finder">Find your oil</a>
+    <a href="/pages/contact" >Let’s talk</a>
+  </nav>
+  <div class="header-actions">
+    <a href="/search" class="icon-button" aria-label="Search oils"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>
 
-  <!-- Real header markup from snippets/header.liquid, with Liquid swapped for static equivalents -->
-  <header class="w-full px-6 md:px-12 py-5 flex items-center justify-between z-50 absolute left-0 bg-transparent font-sans" id="nav" style="top: 29px;">
-    <a href="#" class="flex items-center flex-shrink-0">
-      <img src="/assets/primary-logo.png" alt="Oorvi" width="150" height="59" class="h-12 md:h-14 w-auto">
-    </a>
+</svg>
+</a>
+    <a class="icon-button account-link" href="/account" aria-label="Your account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
 
-    <nav class="hidden md:flex items-center gap-10">
-      <a href="#" class="text-sm font-medium pb-1 border-b-2 border-brand-textDark text-brand-textDark">Home</a>
-      <a href="#" class="text-sm font-medium pb-1 border-b-2 border-transparent text-brand-textLight hover:text-brand-textDark transition">Our Products</a>
-      <a href="#" class="text-sm font-medium pb-1 border-b-2 border-transparent text-brand-textLight hover:text-brand-textDark transition">Our Story</a>
-      <a href="#" class="text-sm font-medium pb-1 border-b-2 border-transparent text-brand-textLight hover:text-brand-textDark transition">Contact</a>
-    </nav>
+</svg>
+</a>
+    <a href="/cart" class="cart-link" aria-label="Shopping bag, 0 items"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/>
 
-    <div class="flex items-center gap-3 md:gap-4">
-      <a href="#" class="w-10 h-10 rounded-full bg-brand-bg/85 backdrop-blur-sm shadow-sm flex items-center justify-center text-brand-textDark hover:text-brand-olive transition" aria-label="Search">
-        <i class="fa-solid fa-magnifying-glass text-lg"></i>
-      </a>
-      <a href="#" class="w-10 h-10 rounded-full bg-brand-bg/85 backdrop-blur-sm shadow-sm flex items-center justify-center text-brand-textDark hover:text-brand-olive transition" aria-label="Login">
-        <i class="fa-regular fa-user text-lg"></i>
-      </a>
-      <a href="#" class="w-10 h-10 rounded-full bg-brand-bg/85 backdrop-blur-sm shadow-sm flex items-center justify-center text-brand-textDark hover:text-brand-olive transition relative" aria-label="Cart">
-        <i class="fa-solid fa-cart-shopping text-lg"></i>
-        <span class="absolute -top-1.5 -right-1.5 bg-brand-olive text-white text-[0.6rem] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-      </a>
-      <button class="w-10 h-10 rounded-full bg-brand-bg/85 backdrop-blur-sm shadow-sm md:hidden flex items-center justify-center text-brand-textDark hover:text-brand-olive transition" aria-label="Menu">
-        <i class="fa-solid fa-bars text-lg"></i>
-      </button>
-    </div>
-  </header>
+</svg>
+<span data-cart-count>0</span></a>
+    <button class="icon-button menu-toggle" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 7h16M4 12h16M4 17h16"/>
 
-  <main>
+</svg>
+</button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation" hidden>
+  <div class="mobile-menu-top"><a href="/"><img src="/assets/oorvi-original-primary.svg" alt="Oorvi" width="110" height="93"></a><button class="icon-button" id="menuClose" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="m6 6 12 12M6 18 18 6"/>
 
-<div class="font-sans antialiased text-brand-textDark selection:bg-brand-olive selection:text-white">
-
-  <section class="w-full px-6 md:px-12 pt-32 md:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 items-center relative rounded-b-[2.5rem] lg:rounded-b-[4rem] overflow-hidden bg-brand-bg"
-    style="background-image: linear-gradient(100deg, rgba(244,241,234,0.9) 0%, rgba(244,241,234,0.65) 32%, rgba(244,241,234,0.2) 52%, rgba(244,241,234,0) 68%), url('/assets/hero-groundnut-lifestyle.png'); background-repeat: no-repeat; background-position: right center; background-size: cover;">
-
-    <div class="lg:col-span-7 flex flex-col justify-center relative z-10">
-      <p class="text-xs font-semibold tracking-[0.2em] text-brand-textLight uppercase mb-6">Traditional Foods For A Brighter Tomorrow</p>
-
-      <h2 class="font-serif text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] text-brand-textDark mb-6">
-        Pure.<br>
-        Traditional.<br>
-        <span class="italic font-medium">Thoughtfully Made.</span>
-      </h2>
-
-      <p class="text-brand-textLight md:text-lg max-w-lg mb-10 leading-relaxed font-light">
-        At OORVI, we bring you nature's goodness through traditionally made, cold pressed oils — pure, wholesome and crafted for a healthier tomorrow.
-      </p>
-
-      <a href="#" class="bg-brand-olive hover:bg-brand-oliveHover text-white px-8 py-3.5 rounded-full w-max flex items-center gap-3 font-medium transition duration-300 shadow-lg shadow-brand-olive/20 mb-16">
-        Shop Now
-        <i class="fa-solid fa-chevron-right text-sm"></i>
-      </a>
-
-      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-0 border-l-2 sm:border-l-0 border-brand-border pl-4 sm:pl-0">
-        <div class="flex items-center gap-4 sm:pr-8 sm:border-r border-brand-border">
-          <div class="w-12 h-12 rounded-full border border-brand-textDark flex items-center justify-center flex-shrink-0 bg-brand-bg/70">
-            <i class="fa-solid fa-leaf text-brand-textDark"></i>
-          </div>
-          <div>
-            <h4 class="font-bold text-sm text-brand-textDark">Cold Pressed</h4>
-            <p class="text-xs text-brand-textLight mt-0.5">Retains natural goodness</p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-4 sm:px-8 sm:border-r border-brand-border">
-          <div class="w-12 h-12 rounded-full border border-brand-textDark flex items-center justify-center flex-shrink-0 bg-brand-bg/70">
-            <i class="fa-solid fa-seedling text-brand-textDark"></i>
-          </div>
-          <div>
-            <h4 class="font-bold text-sm text-brand-textDark">100% Natural</h4>
-            <p class="text-xs text-brand-textLight mt-0.5">No chemicals. No compromise.</p>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-4 sm:pl-8">
-          <div class="w-12 h-12 rounded-full border border-brand-textDark flex items-center justify-center flex-shrink-0 relative bg-brand-bg/70">
-            <svg class="w-5 h-5 text-brand-textDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 3H15M12 3V10L6 20H18L15 15" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <h4 class="font-bold text-sm text-brand-textDark">No Additives</h4>
-            <p class="text-xs text-brand-textLight mt-0.5">Just pure nutrition</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lg:col-span-5 h-[360px] lg:h-[700px]"></div>
-  </section>
-
-  <section class="w-full bg-[#fcfbf9] px-6 md:px-12 py-16 border-t border-brand-border/40">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
-      <div>
-        <p class="text-xs font-bold tracking-[0.15em] text-brand-textLight uppercase mb-3">Our Products</p>
-        <h2 class="font-serif text-4xl md:text-5xl text-brand-textDark leading-tight">
-          Rooted in Tradition.<br>
-          Made for Better Living.
-        </h2>
-      </div>
-      <a href="#" class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 hover:text-brand-olive hover:border-brand-olive transition">
-        View All Products <i class="fa-solid fa-chevron-right text-xs ml-1"></i>
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <a href="#" class="bg-brand-card rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition duration-300 group cursor-pointer border border-transparent hover:border-brand-olive/20">
-        <div class="w-24 h-40 bg-[#f4f1ea] rounded-lg shadow-inner flex items-center justify-center p-2 relative overflow-hidden">
-          <img src="/assets/groundnut-cp.png" alt="Groundnut Oil, Cold Pressed" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <div class="flex-1">
-          <h3 class="font-serif text-xl font-medium text-brand-textDark mb-2">Groundnut Oil</h3>
-          <p class="text-sm text-brand-textLight mb-4 font-light">Cold pressed for<br>pure nutrition.</p>
-          <span class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 group-hover:text-brand-olive group-hover:border-brand-olive transition inline-flex items-center gap-2">
-            Shop Now <i class="fa-solid fa-arrow-right text-xs"></i>
-          </span>
-        </div>
-      </a>
-
-      <a href="#" class="bg-brand-card rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition duration-300 group cursor-pointer border border-transparent hover:border-brand-olive/20">
-        <div class="w-24 h-40 bg-[#f4f1ea] rounded-lg shadow-inner flex items-center justify-center p-2 relative overflow-hidden">
-          <img src="/assets/white-sesame-cp.png" alt="Sesame Oil, Cold Pressed" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <div class="flex-1">
-          <h3 class="font-serif text-xl font-medium text-brand-textDark mb-2">Sesame Oil</h3>
-          <p class="text-sm text-brand-textLight mb-4 font-light">Traditionally extracted<br>for rich flavour.</p>
-          <span class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 group-hover:text-brand-olive group-hover:border-brand-olive transition inline-flex items-center gap-2">
-            Shop Now <i class="fa-solid fa-arrow-right text-xs"></i>
-          </span>
-        </div>
-      </a>
-
-      <a href="#" class="bg-brand-card rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition duration-300 group cursor-pointer border border-transparent hover:border-brand-olive/20">
-        <div class="w-24 h-40 bg-[#f4f1ea] rounded-lg shadow-inner flex items-center justify-center p-2 relative overflow-hidden">
-          <img src="/assets/coconut-wp.png" alt="Coconut Oil, Wood Pressed" class="w-full h-full object-contain" loading="lazy">
-        </div>
-        <div class="flex-1">
-          <h3 class="font-serif text-xl font-medium text-brand-textDark mb-2">Coconut Oil</h3>
-          <p class="text-sm text-brand-textLight mb-4 font-light">Pure, natural and<br>perfect for everyday.</p>
-          <span class="text-brand-textDark font-medium text-sm border-b border-brand-textDark pb-0.5 group-hover:text-brand-olive group-hover:border-brand-olive transition inline-flex items-center gap-2">
-            Shop Now <i class="fa-solid fa-arrow-right text-xs"></i>
-          </span>
-        </div>
-      </a>
-    </div>
-  </section>
-
+</svg>
+</button></div>
+  <nav aria-label="Mobile navigation"><a href="/">Home</a><a href="/collections/all">Shop oils</a><a href="/pages/our-story">The Oorvi way</a><a href="/#oil-finder">Find your oil</a><a href="/pages/contact">Let’s talk</a><a href="/account/login">Your account</a></nav>
+  <p>Rooted in tradition.<br>Made for your everyday.</p>
 </div>
 
-  </main>
-</body>
+  <main id="main-content" tabindex="-1">
+<section class="home-hero wrap">
+  <div class="hero-copy"><p class="eyebrow"><span class="tiny-sun">✳</span> From the earth. For your everyday.</p><h1>A little tradition.<br>A lot of <em>goodness.</em></h1><p class="hero-description">Real seeds. Slowly pressed. Nothing extra.<br>Bring the goodness of nature back to your kitchen with our cold & wood pressed oils.</p><a href="/collections/all" class="button">Find your everyday oil <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h16m-6-6 6 6-6 6"/>
+
+</svg>
+</a><div class="hero-note"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M20 3C9 2 3 8 5 15c3 8 16 4 15-12Z"/><path d="M3 21 15 9"/>
+
+</svg>
+<span>Single pressed · Naturally settled · Made in India</span></div></div>
+  <div class="hero-visual"><img src="/assets/oorvi-hero-v4.webp" alt="Oorvi groundnut and coconut oils with native peanuts and coconut in warm morning light" width="1536" height="1024" fetchpriority="high"><div class="hero-stamp"><span>JUST SEEDS.</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M12 2C9 7 5 10 5 15a7 7 0 0 0 14 0c0-5-4-8-7-13Z"/>
+
+</svg>
+<span>JUST GOODNESS.</span></div><div class="photo-caption"><span>Goodness begins at the source.</span><span>01 / THE EVERYDAY ESSENTIAL</span></div></div>
+</section>
+<div class="goodness-strip"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M20 3C9 2 3 8 5 15c3 8 16 4 15-12Z"/><path d="M3 21 15 9"/>
+
+</svg>
+ Native seeds</span><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M12 2C9 7 5 10 5 15a7 7 0 0 0 14 0c0-5-4-8-7-13Z"/>
+
+</svg>
+ First & only pressing</span><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/>
+
+</svg>
+ Naturally settled</span><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M20 3C9 2 3 8 5 15c3 8 16 4 15-12Z"/><path d="M3 21 15 9"/>
+
+</svg>
+ No added preservatives</span></div>
+<section class="shop-section section-space wrap" id="our-oils">
+  <div class="section-heading"><div><p class="eyebrow">Your pantry, a little purer</p><h2>Good food starts<br>with <em>good oil.</em></h2></div><div class="section-heading-side"><p>From your morning dosa to your family’s favourite curry.<br>There’s an Oorvi for every kind of cooking.</p><a class="text-link" href="/collections/all">Explore all oils <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h16m-6-6 6 6-6 6"/>
+
+</svg>
+</a></div></div>
+  <div class="filter-tabs" role="group" aria-label="Filter oils"><button class="active" data-oil-filter="all" aria-pressed="true">All goodness</button><button data-oil-filter="cold" aria-pressed="false">Cold pressed</button><button data-oil-filter="wood" aria-pressed="false">Wood pressed</button></div>
+  <div class="oil-grid">
+
+
+
+
+
+    <article class="oil-card tone-1" data-oil-type="cold">
+      <a class="oil-image" href="/products/cold-pressed-groundnut-oil"><span class="product-kicker">Cold pressed</span><img src="/assets/groundnut-cp.png" alt="Oorvi Groundnut oil bottle" width="400" height="400" loading="lazy"><span class="image-arrow">↗</span></a>
+      <div class="oil-info"><h3><a href="/products/cold-pressed-groundnut-oil">Groundnut oil</a></h3><p>The everyday all-rounder</p><div class="oil-buy"><span>₹490 <small>/ 1 L</small></span><a class="small-button" href="/products/cold-pressed-groundnut-oil" aria-label="Choose Groundnut oil">Choose oil <span>+</span></a></div></div>
+    </article>
+    <article class="oil-card tone-2" data-oil-type="cold">
+      <a class="oil-image" href="/products/oorvi-cold-pressed-white-sesame-oil-500ml"><span class="product-kicker">Cold pressed</span><img src="/assets/white-sesame-cp.png" alt="Oorvi White sesame oil bottle" width="400" height="400" loading="lazy"><span class="image-arrow">↗</span></a>
+      <div class="oil-info"><h3><a href="/products/oorvi-cold-pressed-white-sesame-oil-500ml">White sesame oil</a></h3><p>Nutty. Aromatic. Full of character</p><div class="oil-buy"><span>₹269 <small>/ 500 mL</small></span><a class="small-button" href="/products/oorvi-cold-pressed-white-sesame-oil-500ml" aria-label="Choose White sesame oil">Choose oil <span>+</span></a></div></div>
+    </article>
+    <article class="oil-card tone-3" data-oil-type="wood">
+      <a class="oil-image" href="/products/wood-pressed-coconut-oil"><span class="product-kicker">Wood pressed</span><img src="/assets/coconut-wp.png" alt="Oorvi Coconut oil bottle" width="400" height="400" loading="lazy"><span class="image-arrow">↗</span></a>
+      <div class="oil-info"><h3><a href="/products/wood-pressed-coconut-oil">Coconut oil</a></h3><p>A little tropical goodness</p><div class="oil-buy"><span>₹759 <small>/ 1 L</small></span><a class="small-button" href="/products/wood-pressed-coconut-oil" aria-label="Choose Coconut oil">Choose oil <span>+</span></a></div></div>
+    </article>
+    <article class="oil-card tone-4" data-oil-type="cold">
+      <a class="oil-image" href="/products/cold-pressed-mustard"><span class="product-kicker">Cold pressed</span><img src="/assets/mustard-cp.png" alt="Oorvi Mustard oil bottle" width="400" height="400" loading="lazy"><span class="image-arrow">↗</span></a>
+      <div class="oil-info"><h3><a href="/products/cold-pressed-mustard">Mustard oil</a></h3><p>Big flavour for bold cooking</p><div class="oil-buy"><span>₹460 <small>/ 1 L</small></span><a class="small-button" href="/products/cold-pressed-mustard" aria-label="Choose Mustard oil">Choose oil <span>+</span></a></div></div>
+    </article>
+  </div>
+</section>
+<section class="process-section" id="our-process"><div class="process-grid wrap"><div class="process-photo"><img src="/assets/oorvi-craft-v3.webp" alt="Golden oil poured into a ceramic bowl with native seeds" width="1536" height="1024" loading="lazy"><span class="photo-label">SLOW BY NATURE. GOOD BY CHOICE.</span></div><div class="process-copy"><p class="eyebrow">The Oorvi way</p><h2>Nothing rushed.<br>Nothing <em>unnecessary.</em></h2><p>Some things are better the way they’ve always been. We keep our process simple, so the seed’s own flavour does the talking.</p><div class="process-step"><span>01</span><div><h3>Start with good seeds.</h3><p>Carefully chosen native seeds. The beginning of every bottle.</p></div></div><div class="process-step"><span>02</span><div><h3>Press once. With patience.</h3><p>Cold or wood pressed, without refining or blending.</p></div></div><div class="process-step"><span>03</span><div><h3>Let nature do its thing.</h3><p>Naturally settled, then bottled. Just honest oil.</p></div></div><a href="/pages/our-story" class="text-link">Get to know Oorvi <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h16m-6-6 6 6-6 6"/>
+
+</svg>
+</a></div></div></section>
+<section class="finder-section section-space wrap" id="oil-finder"><div class="finder-intro"><p class="eyebrow">A good place to start</p><h2>Your kitchen.<br>Your kind of <em>oil.</em></h2><p>Every oil has its own personality.<br>Find the one that feels at home in your cooking.</p><div class="finder-buttons" role="group" aria-label="What do you love cooking?"><button data-finder="everyday" class="active" aria-pressed="true">Everyday cooking</button><button data-finder="traditional" aria-pressed="false">Traditional favourites</button><button data-finder="light" aria-pressed="false">Light & simple</button></div></div><div class="finder-result" aria-live="polite"><div class="finder-bottle"><img id="finder-image" src="/assets/groundnut-cp.png" alt="Oorvi groundnut oil" width="400" height="400" loading="lazy"></div><div><span class="eyebrow" id="finder-tag">Meet your everyday companion</span><h3 id="finder-title">Groundnut oil</h3><p id="finder-description">A warm, nutty flavour that feels right at home in curries, stir-fries, and everyday Indian cooking.</p><a id="finder-link" href="/products/cold-pressed-groundnut-oil" class="text-link">Meet your match <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h16m-6-6 6 6-6 6"/>
+
+</svg>
+</a></div></div></section>
+<section class="kitchen-banner wrap"><img src="/assets/oorvi-kitchen-v3.webp" alt="A sunlit Indian kitchen table with dosa, chutney, and a home-cooked meal" width="1536" height="1024" loading="lazy"><div class="kitchen-copy"><p class="eyebrow">For meals. For memories.</p><h2>The everyday.<br>Made a little <em>better.</em></h2><p>Familiar flavours. A table full of stories.<br>Goodness belongs in the little things.</p><a class="button button-cream" href="/collections/all">Bring Oorvi home <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h16m-6-6 6 6-6 6"/>
+
+</svg>
+</a></div></section>
+<section class="questions-section section-space wrap"><div><p class="eyebrow">A little clarity</p><h2>Good questions.<br><em>Honest answers.</em></h2><a class="text-link" href="/pages/contact">Ask us anything <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h16m-6-6 6 6-6 6"/>
+
+</svg>
+</a></div><div class="questions"><details open><summary>What makes cold pressed oil different?<span>+</span></summary><p>Cold pressing extracts oil mechanically from seeds, without the refining, bleaching, and deodorising used for many refined oils. The seed’s natural aroma and character remain.</p></details><details><summary>Cold pressed or wood pressed?<span>+</span></summary><p>Our cold pressed oils use a steel expeller. Our wood pressed range uses a traditional slow-turning ghani. Both are single pressed and naturally settled. Choose by the flavour you enjoy and the meals you cook.</p></details><details><summary>Why does my oil look a little cloudy?<span>+</span></summary><p>Our oils are naturally settled. A little sediment or a change in colour can be part of their natural character. Coconut oil can also solidify in cooler temperatures.</p></details><details><summary>How should I store my bottle?<span>+</span></summary><p>Keep it tightly closed in a cool, dry place, away from direct sunlight. Follow the storage instructions and best-before date on your bottle.</p></details></div></section>
+
+</main>
+  <footer class="site-footer">
+  <div class="footer-top wrap">
+    <div><p class="eyebrow">A little goodness in your inbox</p><h2>Stay close to<br>the good stuff.</h2><p>New pressings, kitchen inspiration, and stories from Oorvi.</p></div>
+    <form method="post" action="/__preview-form/customer" class="newsletter-form" data-preview-form="customer">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+
+        <label for="newsletter-email">Your email address</label><div class="newsletter-field"><input type="email" id="newsletter-email" name="contact[email]" placeholder="you@example.com" autocomplete="email" required><button type="submit" aria-label="Subscribe to the newsletter"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h16m-6-6 6 6-6 6"/>
+
+</svg>
+</button></div>
+        <small>By subscribing, you agree to our <a href="/policies/privacy-policy">privacy policy</a>.</small>
+
+
+    </form>
+  </div>
+  <div class="footer-main wrap"><a class="footer-brand" href="/"><img src="/assets/oorvi-original-secondary.svg" alt="Oorvi - Premium Natural Products" width="230" height="122"><span>From the earth. For your everyday.</span></a><nav aria-label="Footer navigation"><a href="/collections/all">Shop oils</a><a href="/pages/our-story">Our story</a><a href="/pages/contact">Contact us</a><a href="https://www.instagram.com/oorvi.store/" target="_blank" rel="noopener">Instagram ↗</a></nav><div><a href="mailto:care@oorvi.store">care@oorvi.store</a><br><a href="tel:+919642114488">+91 96421 14488</a><p>Made with care in Hyderabad, India.</p></div></div>
+  <div class="footer-bottom wrap"><span>© 2026 Oorvi. Goodness. Naturally.</span><div><a href="/policies/privacy-policy">Privacy</a><a href="/policies/terms-of-service">Terms</a><a href="/policies/refund-policy">Returns</a><a href="/policies/shipping-policy">Shipping</a></div></div>
+</footer>
+
+  <script src="/assets/oorvi-theme.js" defer></script>
+<aside class="preview-notice">Local design preview · Sample catalogue · Shopify forms simulated</aside><script src="/scripts/preview-client.js" defer></script></body>
 </html>

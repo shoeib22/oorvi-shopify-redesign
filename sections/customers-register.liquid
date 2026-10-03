@@ -1,54 +1,5 @@
-<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
-  <section class="w-full pt-28 pb-12 px-6 text-center">
-    <p class="uppercase tracking-[0.3em] text-xs font-semibold text-brand-textLight mb-4">Account</p>
-    <h1 class="text-4xl md:text-6xl font-serif text-brand-textDark">Create your account</h1>
-  </section>
-
-  <div class="max-w-md mx-auto px-6 pb-24">
-    <div class="bg-white border border-brand-border/60 rounded-3xl p-8 md:p-10">
-      {% form 'create_customer' %}
-        {% if form.errors %}
-          <p class="text-red-700 text-sm mb-6">{{ form.errors | default_errors }}</p>
-        {% endif %}
-
-        <div class="grid grid-cols-2 gap-5 mb-6">
-          <div>
-            <label for="register-first-name" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">First name</label>
-            <input type="text" id="register-first-name" name="customer[first_name]" autocomplete="given-name"
-              class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
-          </div>
-          <div>
-            <label for="register-last-name" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Last name</label>
-            <input type="text" id="register-last-name" name="customer[last_name]" autocomplete="family-name"
-              class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <label for="register-email" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Email</label>
-          <input type="email" id="register-email" name="customer[email]" autocomplete="email" required
-            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
-        </div>
-
-        <div class="mb-8">
-          <label for="register-password" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Password</label>
-          <input type="password" id="register-password" name="customer[password]" autocomplete="new-password" required
-            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
-        </div>
-
-        <button type="submit" class="w-full bg-brand-olive hover:bg-brand-oliveHover text-white py-4 rounded-full uppercase tracking-widest text-xs font-bold transition shadow-lg shadow-brand-olive/20">Create Account</button>
-      {% endform %}
-    </div>
-
-    <p class="text-center mt-8 text-sm text-brand-textLight">
-      Already have an account? <a href="{{ routes.account_login_url }}" class="text-brand-olive font-semibold">Log in</a>
-    </p>
-  </div>
-</div>
-
+<section class="account-shell wrap"><div class="account-art"><img src="{{ 'oorvi-craft-v3.webp' | asset_url }}" alt="Golden oil poured into a ceramic bowl" width="1536" height="1024"><div><p class="eyebrow">Make yourself at home</p><h2>Good ingredients.<br><em>Good company.</em></h2></div></div><div class="account-panel"><p class="eyebrow">Join the Oorvi family</p><h1>A little more<br><em>goodness.</em></h1><p>Create your account for orders and saved addresses.</p>
+{% form 'create_customer', class: 'account-form' %}{% if form.errors %}<div class="form-error" role="alert">{{ form.errors | default_errors }}</div>{% endif %}<div class="account-name-fields"><div><label for="register-first-name">First name</label><input id="register-first-name" type="text" name="customer[first_name]" autocomplete="given-name" value="{{ form.first_name | escape }}"></div><div><label for="register-last-name">Last name</label><input id="register-last-name" type="text" name="customer[last_name]" autocomplete="family-name" value="{{ form.last_name | escape }}"></div></div><label for="register-email">Email address</label><input id="register-email" type="email" name="customer[email]" autocomplete="email" value="{{ form.email | escape }}" required><label for="register-password">Password</label><input id="register-password" type="password" name="customer[password]" autocomplete="new-password" required><button type="submit" class="button">Create your account {% render 'icon', name: 'arrow' %}</button>{% endform %}<p class="account-switch">Already feel at home here? <a href="{{ routes.account_login_url }}">Log in ↗</a></p></div></section>
 {% schema %}
-{
-  "name": "Customer Register",
-  "settings": []
-}
+{"name":"Join Oorvi","settings":[]}
 {% endschema %}

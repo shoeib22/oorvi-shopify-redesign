@@ -1,0 +1,5 @@
+{% capture packshot %}{% render 'oil-packshot', oil: oil %}{% endcapture %}
+<article class="oil-card tone-{{ tone | default: 1 }}">
+  <a class="oil-image" href="{{ oil.url }}"><span class="product-kicker">{% render 'oil-method', oil: oil %}</span>{% if oil.featured_image %}<img src="{{ packshot | strip }}" alt="{{ oil.title | escape }}" width="600" height="600" loading="lazy">{% else %}<span>Oorvi · Goodness. Naturally.</span>{% endif %}<span class="image-arrow">&#8599;</span></a>
+  <div class="oil-info"><h3><a href="{{ oil.url }}">{% render 'oil-title', oil: oil %}</a></h3><p>Your everyday kitchen essential</p><div class="oil-buy"><span>{{ oil.price | money }}{% if oil.compare_at_price > oil.price %} <small><s>{{ oil.compare_at_price | money }}</s></small>{% endif %}</span><a href="{{ oil.url }}" class="small-button">{% if oil.available %}Choose oil <span>+</span>{% else %}View oil{% endif %}</a></div></div>
+</article>

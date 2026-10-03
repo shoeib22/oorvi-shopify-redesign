@@ -1,0 +1,15 @@
+<div id="predictive-search-content">
+{% if predictive_search.performed %}
+  {% if predictive_search.resources.products.size > 0 %}
+    <ul class="search-suggestions" aria-label="Suggested oils">
+    {% for product in predictive_search.resources.products %}
+      {% capture packshot %}{% render 'oil-packshot', oil: product %}{% endcapture %}
+      <li><a href="{{ product.url }}"><img src="{{ packshot | strip }}" alt="{{ product.title | escape }}" width="70" height="85" loading="lazy"><span><strong>{% render 'oil-title', oil: product %}</strong><small>{% render 'oil-method', oil: product %}</small></span><span>{{ product.price | money }}</span>{% render 'icon', name: 'arrow' %}</a></li>
+    {% endfor %}
+    </ul>
+  {% else %}<p class="search-hint">No oils match that search. Try groundnut, coconut, or sesame.</p>{% endif %}
+{% endif %}
+</div>
+{% schema %}
+{"name":"Suggested oils","settings":[]}
+{% endschema %}

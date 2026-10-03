@@ -1,0 +1,86 @@
+const { chromium } = require('@playwright/test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const out = path.join(root,'output'); fs.mkdirSync(out,{recursive:true});
+(async () => {
+  const browser = await chromium.launch({headless:true,channel:process.env.OORVI_BROWSER || 'msedge'});
+  const page = await browser.newPage();
+  const errors = []; page.on('pageerror', error => errors.push(error.message));
+  const routes = ['/', '/collections/all', '/products/cold-pressed-groundnut-oil', '/pages/our-story', '/pages/contact', '/cart', '/account/login', '/account/register', '/account', '/account/addresses', '/search', '/404', '/preview/cart-filled', '/preview/product-sold-out', '/preview/collection-empty', '/preview/search-results', '/preview/password-reset'];
+  for (const width of [320,390,768,1440]) {
+    await page.setViewportSize({width,height:900});
+    for (const route of routes) {
+      await page.goto('http://localhost:4173' + route);
+      await page.locator('h1').waitFor();
+      await page.waitForTimeout(120);
+      const result = await page.evaluate(() => ({overflow:document.documentElement.scrollWidth > innerWidth + 1,h1s:document.querySelectorAll('h1').length,brokenLinks:[...document.querySelectorAll('a')].filter(a=>!a.getAttribute('href')).map(a=>a.textContent),imageErrors:[...document.images].filter(i=>i.complete && !i.naturalWidth).map(i=>i.src)}));
+      assert.equal(result.overflow,false,`${width}px ${route}: horizontal overflow`);
+      assert.equal(result.h1s,1,`${route}: heading hierarchy`);
+      assert.deepEqual(result.brokenLinks,[],`${route}: empty hrefs`);
+      assert.deepEqual(result.imageErrors,[],`${route}: failed images`);
+    }
+    console.log(`Layout checks passed: ${width}px × ${routes.length} routes`);
+  }
+  await page.goto('http://localhost:4173');
+  await page.getByRole('button',{name:'Wood pressed',exact:true}).click();
+  assert.equal(await page.locator('.oil-card:visible').count(),1);
+  await page.getByRole('button',{name:'Cold pressed',exact:true}).click();
+  assert.equal(await page.locator('.oil-card:visible').count(),3);
+  await page.getByRole('button',{name:'All goodness',exact:true}).click();
+  assert.equal(await page.locator('.oil-card:visible').count(),4);
+  await page.getByRole('button',{name:'Traditional favourites',exact:true}).click();
+  assert.equal(await page.locator('#finder-title').textContent(),'White sesame oil');
+  assert.equal(await page.locator('#finder-link').getAttribute('href'),'/products/oorvi-cold-pressed-white-sesame-oil-500ml');
+  await page.getByRole('button',{name:'Light & simple',exact:true}).click();
+  assert.equal(await page.locator('#finder-title').textContent(),'Safflower oil');
+  assert.ok((await page.locator('#finder-image').getAttribute('src')).includes('safflower-cp.png'));
+  await page.setViewportSize({width:390,height:844});
+  await page.locator('#menuBtn').click();
+  assert.equal(await page.locator('#menuBtn').getAttribute('aria-expanded'),'true');
+  assert.equal(await page.locator('#menuClose').evaluate(el=>el===document.activeElement),true);
+  await page.locator('.mobile-menu-top a').focus();
+  await page.keyboard.press('Shift+Tab');
+  assert.equal(await page.locator('#mobileMenu nav a').last().evaluate(el=>el===document.activeElement),true);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#mobileMenu').isVisible(),false);
+  assert.equal(await page.locator('#menuBtn').evaluate(el=>el===document.activeElement),true);
+  await page.locator('#menuBtn').click();
+  await page.locator('#mobileMenu').getByRole('link',{name:'Shop oils',exact:true}).click();
+  await page.waitForURL('**/collections/all');
+  await page.selectOption('#sort-by','price-ascending'); await page.waitForURL('**/collections/all?sort_by=price-ascending');
+  const prices=await page.locator('.oil-buy>span').allTextContents();
+  const values=prices.map(s=>Number(s.replace(/[^0-9]/g,''))); assert.deepEqual(values,[...values].sort((a,b)=>a-b));
+  await page.goto('http://localhost:4173/preview/product-variants');
+  await page.getByRole('button',{name:'Decrease quantity',exact:true}).click();
+  assert.equal(await page.locator('#product-quantity').inputValue(),'1');
+  await page.getByRole('button',{name:'Increase quantity',exact:true}).click();
+  assert.equal(await page.locator('#product-quantity').inputValue(),'2');
+  await page.selectOption('#product-variant','900');
+  assert.equal(await page.locator('#product-price').textContent(),'₹940');
+  assert.equal(await page.locator('#product-compare-price').textContent(),'₹980');
+  await page.selectOption('#product-variant','901');
+  assert.equal(await page.locator('#product-submit').isDisabled(),true);
+  await page.locator('[data-product-thumbnail]').nth(1).click();
+  assert.ok((await page.locator('#product-main-photo').getAttribute('src')).includes('oorvi-hero-v4'));
+  await page.goto('http://localhost:4173/preview/cart-filled');
+  assert.equal(await page.locator('input[name^="updates["]').inputValue(),'2');
+  await page.getByRole('button',{name:/Increase quantity for/}).click();
+  assert.equal(await page.locator('input[name^="updates["]').inputValue(),'3');
+  await page.goto('http://localhost:4173/pages/contact');
+  await page.locator('#contact-name').fill('Preview check');await page.locator('#contact-email').fill('invalid');
+  assert.equal(await page.locator('#contact-email').evaluate(el=>el.checkValidity()),false);
+  await page.locator('#contact-email').fill('review@example.com');await page.locator('#contact-message').fill('Preview form verification.');
+  await page.getByRole('button',{name:'Send your message'}).click();
+  await page.locator('[data-preview-note]').waitFor();
+  assert.equal(await page.locator('[data-preview-note]').getAttribute('role'),'status');
+  assert.deepEqual(errors,[],'Browser JavaScript errors');
+  for (const [name,route,width] of [['home-desktop','/',1440],['home-mobile','/',390],['shop-desktop','/collections/all',1440],['product-mobile','/products/cold-pressed-groundnut-oil',390],['cart-mobile','/preview/cart-filled',390],['account-desktop','/account/login',1440]]) {
+    await page.setViewportSize({width,height:900});await page.goto('http://localhost:4173'+route);
+    await page.evaluate(async()=>{await document.fonts.ready;document.querySelectorAll('img').forEach(img=>img.loading='eager');await Promise.all([...document.images].map(img=>img.decode().catch(()=>{})));});
+    await page.waitForTimeout(300);await page.screenshot({path:path.join(out,name+'.png'),fullPage:true});
+  }
+  console.log('Interaction checks passed: oil filters, finder, accessible mobile menu, sort, variant prices, sold out, gallery, quantities, contact validation. No browser JavaScript errors.');
+  await browser.close();
+})().catch(error=>{console.error(error);process.exit(1);});

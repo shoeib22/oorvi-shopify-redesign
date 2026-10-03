@@ -1,60 +1,6 @@
-<div class="font-sans antialiased text-brand-textDark bg-brand-bg min-h-screen">
-  <section class="w-full pt-28 pb-12 px-6 text-center">
-    <p class="uppercase tracking-[0.3em] text-xs font-semibold text-brand-textLight mb-4">Account</p>
-    <h1 class="text-4xl md:text-6xl font-serif text-brand-textDark">Log in</h1>
-  </section>
-
-  <div class="max-w-md mx-auto px-6 pb-24">
-    <div class="bg-white border border-brand-border/60 rounded-3xl p-8 md:p-10">
-      {% form 'customer_login' %}
-        {% if form.errors %}
-          <p class="text-red-700 text-sm mb-6">{{ form.errors | default_errors }}</p>
-        {% endif %}
-
-        <div class="mb-6">
-          <label for="customer-email" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Email</label>
-          <input type="email" id="customer-email" name="customer[email]" autocomplete="email" required
-            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
-        </div>
-
-        <div class="mb-8">
-          <label for="customer-password" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Password</label>
-          <input type="password" id="customer-password" name="customer[password]" autocomplete="current-password" required
-            class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
-        </div>
-
-        <button type="submit" class="w-full bg-brand-olive hover:bg-brand-oliveHover text-white py-4 rounded-full uppercase tracking-widest text-xs font-bold transition shadow-lg shadow-brand-olive/20">Log In</button>
-      {% endform %}
-
-      <details class="mt-8 border-t border-brand-border/50 pt-6">
-        <summary class="cursor-pointer text-sm font-semibold text-brand-olive">Forgot your password?</summary>
-        {% form 'recover_customer_password' %}
-          {% if form.posted_successfully? %}
-            <p class="text-brand-olive font-medium mt-4">If that email has an account, a reset link is on its way.</p>
-          {% else %}
-            {% if form.errors %}
-              <p class="text-red-700 text-sm mt-4">{{ form.errors | default_errors }}</p>
-            {% endif %}
-            <div class="mt-5 mb-4">
-              <label for="recover-email" class="block text-xs font-semibold tracking-widest text-brand-textLight uppercase mb-2">Email</label>
-              <input type="email" id="recover-email" name="email" autocomplete="email" required
-                class="w-full bg-transparent border-b border-brand-border/80 py-3 text-brand-textDark focus:outline-none focus:border-brand-olive transition-colors">
-            </div>
-            <button type="submit" class="w-full border border-brand-border text-brand-textDark py-3.5 rounded-full uppercase tracking-widest text-xs font-bold hover:border-brand-olive hover:text-brand-olive transition">Send Reset Link</button>
-          {% endif %}
-        {% endform %}
-      </details>
-    </div>
-
-    <p class="text-center mt-8 text-sm text-brand-textLight">
-      New to Oorvi? <a href="{{ routes.account_register_url }}" class="text-brand-olive font-semibold">Create an account</a>
-    </p>
-  </div>
-</div>
-
+<section class="account-shell wrap"><div class="account-art"><img src="{{ 'oorvi-hero-v4.webp' | asset_url }}" alt="Oorvi oils in warm morning light" width="1536" height="1024"><div><p class="eyebrow">Your daily dose of goodness</p><h2>A familiar place.<br>A little <em>goodness.</em></h2></div></div><div class="account-panel"><p class="eyebrow">Your Oorvi account</p><h1>Welcome <em>back.</em></h1><p>Log in to see your orders and saved addresses.</p>
+{% form 'customer_login', class: 'account-form' %}{% if form.errors %}<div class="form-error" role="alert">{{ form.errors | default_errors }}</div>{% endif %}<label for="customer-email">Email address</label><input type="email" id="customer-email" name="customer[email]" autocomplete="email" required><label for="customer-password">Password</label><input type="password" id="customer-password" name="customer[password]" autocomplete="current-password" required><button class="button" type="submit">Log in {% render 'icon', name: 'arrow' %}</button>{% endform %}
+<details class="account-recovery" id="recover"><summary>Forgot your password?</summary>{% form 'recover_customer_password', class: 'account-form' %}{% if form.posted_successfully? %}<p class="form-success" role="status">If that email has an account, a reset link is on its way.</p>{% else %}{% if form.errors %}<div class="form-error" role="alert">{{ form.errors | default_errors }}</div>{% endif %}<label for="recover-email">Email address</label><input type="email" id="recover-email" name="email" autocomplete="email" required><button class="button" type="submit">Send reset link</button>{% endif %}{% endform %}</details><p class="account-switch">New to Oorvi? <a href="{{ routes.account_register_url }}">Create an account ↗</a></p></div></section>
 {% schema %}
-{
-  "name": "Customer Login",
-  "settings": []
-}
+{"name":"Welcome back","settings":[]}
 {% endschema %}

@@ -1,0 +1,5 @@
+node_modules/
+.preview/
+.playwright-cli/
+output/
+.claude/

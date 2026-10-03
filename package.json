@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "oorvi-theme-tools",
+  "scripts": {
+    "preview:build": "node scripts/build-preview.cjs",
+    "preview": "node scripts/preview-server.cjs",
+    "check": "node scripts/check-theme.cjs",
+    "verify:ui": "node scripts/verify-ui.cjs",
+    "capture": "node scripts/capture.cjs",
+    "css:build": "npx --yes --package=tailwindcss@3.4.19 tailwindcss -i scripts/tailwind-input.css -o assets/oorvi-utilities.css --minify",
+    "verify:search": "node scripts/verify-search.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "liquidjs": "^10.21.0"
+  }
+}
