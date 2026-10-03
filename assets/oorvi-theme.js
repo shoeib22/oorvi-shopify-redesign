@@ -110,7 +110,7 @@
         const endpoint = searchExperience.dataset.searchEndpoint || (window.Shopify?.routes?.root || '/') + 'search/suggest';
         const url = new URL(endpoint, location.origin);
         url.searchParams.set('q', query); url.searchParams.set('section_id', 'predictive-search');
-        url.searchParams.set('resources[type]', 'product'); url.searchParams.set('resources[limit]', '6');
+        url.searchParams.set('resources[type]', 'product'); url.searchParams.set('resources[limit]', '10');
         url.searchParams.set('resources[options][unavailable_products]', 'show');
         url.searchParams.set('resources[options][fields]', 'title');
         try {
@@ -120,6 +120,14 @@
           if (requestVersion !== version) return;
           const content = new DOMParser().parseFromString(html, 'text/html').getElementById('predictive-search-content');
           if (!content) throw new Error('Search unavailable');
+          const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+          content.querySelectorAll('.search-suggestions li').forEach(item => {
+            const title = item.querySelector('strong')?.textContent.toLowerCase() || '';
+            if (!terms.every(term => title.includes(term))) item.remove();
+          });
+          if (content.querySelector('.search-suggestions') && !content.querySelector('.search-suggestions a')) {
+            const hint = document.createElement('p'); hint.className = 'search-hint'; hint.textContent = 'No oils match that search. Try groundnut, coconut, or sesame.'; content.replaceChildren(hint);
+          }
           panel.replaceChildren(...content.childNodes); panel.hidden = false;
           const count = panel.querySelectorAll('.search-suggestions a').length;
           status.textContent = count ? `${count} suggested ${count === 1 ? 'oil' : 'oils'}. Press Search for all results.` : 'No matching oils. Try a different seed name.';
