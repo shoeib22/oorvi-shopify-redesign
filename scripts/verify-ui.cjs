@@ -47,7 +47,7 @@ const out = path.join(root,'output'); fs.mkdirSync(out,{recursive:true});
   assert.equal(await page.locator('#mobileMenu').isVisible(),false);
   assert.equal(await page.locator('#menuBtn').evaluate(el=>el===document.activeElement),true);
   await page.locator('#menuBtn').click();
-  await page.locator('#mobileMenu').getByRole('link',{name:'Shop oils',exact:true}).click();
+  await page.locator('#mobileMenu').getByRole('link',{name:'Shop',exact:true}).click();
   await page.waitForURL('**/collections/all');
   await page.selectOption('#sort-by','price-ascending'); await page.waitForURL('**/collections/all?sort_by=price-ascending');
   const prices=await page.locator('.oil-buy>span').allTextContents();

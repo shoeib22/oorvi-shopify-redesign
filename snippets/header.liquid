@@ -3,7 +3,7 @@
 <header class="site-header" id="nav">
   <a href="{{ routes.root_url }}" class="brand" aria-label="Oorvi home"><img src="{{ 'oorvi-original-primary.svg' | asset_url }}" alt="Oorvi ? Premium Natural Products" width="150" height="90"></a>
   <nav class="desktop-nav" aria-label="Main navigation">
-    <a href="{{ routes.all_products_collection_url }}" {% if template.name == 'collection' or template.name == 'product' %}aria-current="page"{% endif %}>Shop oils</a>
+    <a href="{{ routes.all_products_collection_url }}" {% if template.name == 'collection' or template.name == 'product' %}aria-current="page"{% endif %}>Shop</a>
     <a href="{{ pages['our-story'].url | default: '/pages/our-story' }}" {% if page.handle == 'our-story' %}aria-current="page"{% endif %}>The Oorvi way</a>
     <a href="{{ routes.root_url }}#oil-finder">Find your oil</a>
     <a href="{{ pages['contact'].url | default: '/pages/contact' }}" {% if page.handle == 'contact' %}aria-current="page"{% endif %}>Let’s talk</a>
@@ -17,6 +17,6 @@
 </header>
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation" hidden>
   <div class="mobile-menu-top"><a href="{{ routes.root_url }}"><img src="{{ 'oorvi-original-primary.svg' | asset_url }}" alt="Oorvi" width="110" height="93"></a><button class="icon-button" id="menuClose" aria-label="Close menu">{% render 'icon', name: 'close' %}</button></div>
-  <nav aria-label="Mobile navigation"><a href="{{ routes.root_url }}">Home</a><a href="{{ routes.all_products_collection_url }}">Shop oils</a><a href="{{ pages['our-story'].url | default: '/pages/our-story' }}">The Oorvi way</a><a href="{{ routes.root_url }}#oil-finder">Find your oil</a><a href="{{ pages['contact'].url | default: '/pages/contact' }}">Let’s talk</a><a href="{{ routes.account_login_url }}">Your account</a></nav>
+  <nav aria-label="Mobile navigation"><a href="{{ routes.root_url }}">Home</a><a href="{{ routes.all_products_collection_url }}">Shop</a><a href="{{ pages['our-story'].url | default: '/pages/our-story' }}">The Oorvi way</a><a href="{{ routes.root_url }}#oil-finder">Find your oil</a><a href="{{ pages['contact'].url | default: '/pages/contact' }}">Let’s talk</a><a href="{{ routes.account_login_url }}">Your account</a></nav>
   <p>Rooted in tradition.<br>Made for your everyday.</p>
 </div>
